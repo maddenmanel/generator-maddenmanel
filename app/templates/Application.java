@@ -6,10 +6,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ImportResource;
 
-@SpringBootApplication
 @SpringBootApplication(scanBasePackages = {"<%=packageName%>"})
 @ImportResource(value = {"classpath:spring/spring-config.xml"})
-public class Application {
+public class Application extends SpringBootServletInitializer{
 
   @Override
   public SpringApplicationBuilder configure(SpringApplicationBuilder builder) {

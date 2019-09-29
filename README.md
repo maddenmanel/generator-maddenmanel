@@ -21,7 +21,7 @@ $ npm install -g generator-unionstars
 **Initiate spring-generator!**
 
 ```
-$ yo spring
+$ yo unionstars
 ```
 _The interactive CLI menu will guide the way._
 
