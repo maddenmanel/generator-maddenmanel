@@ -1,0 +1,25 @@
+info:
+  version: 0.0.1
+
+spring:
+  application:
+    name: <%= baseName %>
+  profiles:
+    active: ${spring.profiles.active}
+    thymeleaf:
+      cache: false
+      prefix: classpath:/templates/
+      suffix: .html
+    datasource:
+      url: jdbc:mysql://127.0.0.1:3306/example
+      username: test
+      password: test
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    cache:
+      type: caffeine
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    default-statement-timeout: 10
+  mapper-locations: classpath:mapper/*.xml
