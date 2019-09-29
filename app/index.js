@@ -43,7 +43,7 @@ SpringGenerator.prototype.askFor = function askFor() {
         {
             type: 'string',
             name: 'bootVersion',
-            message: 'Enter Spring Boot version:',
+            message: '请输入springboot的版本:',
             default: '2.1.7.RELEASE'
         }, {
             type: 'string',

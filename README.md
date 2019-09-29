@@ -1,6 +1,6 @@
 ![logo](logo/Gen-Spring-Logo.jpg?raw=true) 
 
-# generator-spring [![Build Status](https://travis-ci.org/davetownsend/generator-spring.svg?branch=master)](https://travis-ci.org/davetownsend/generator-spring)
+# generator-unionstars [![Build Status](https://travis-ci.org/unionstars/generator-unionstars.svg?branch=master)](https://travis-ci.org/unionstars/generator-unionstars)
 
 A [Yeoman](http://yeoman.io) generator for scaffolding and bootstrapping [Spring Boot](http://projects.spring.io/spring-boot/) and [Spring Cloud](http://projects.spring.io/spring-cloud/) applications. Provides the same selectable options as [Spring Initializr](http://start.spring.io), but with and interactive CLI interface so your hands can stay where they belong, on the keyboard!
 
@@ -12,10 +12,10 @@ A [Yeoman](http://yeoman.io) generator for scaffolding and bootstrapping [Spring
 $ npm install -g yo
 ```
 
-**Install generator-spring**
+**Install generator-unionstars**
 
 ```
-$ npm install -g generator-spring
+$ npm install -g generator-unionstars
 ```
 
 **Initiate spring-generator!**
