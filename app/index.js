@@ -1,6 +1,5 @@
 'use strict';
 var util = require('util');
-var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var mkdirp = require('mkdirp');
@@ -73,19 +72,6 @@ SpringGenerator.prototype.askFor = function askFor() {
           value: 'war'
         }
       ]
-    }, {
-      type: 'checkbox',
-      name: 'buildTool',
-      message: '请输入构建工具:',
-      choices: [
-        {
-          name: 'Gradle',
-          value: 'gradle'
-        }, {
-          name: 'Maven',
-          value: 'maven'
-        }
-      ]
     },
   ];
 
@@ -95,7 +81,6 @@ SpringGenerator.prototype.askFor = function askFor() {
     this.baseName = props.baseName;
     this.javaVersion = props.javaVersion;
     this.packagingType = props.packagingType;
-    this.buildTool = props.buildTool;
 
     // Packaging Type
     var hasPackagingType = function (packagingTypeStarter) {
@@ -110,8 +95,9 @@ SpringGenerator.prototype.askFor = function askFor() {
 
 SpringGenerator.prototype.app = function app() {
   var packageFolder = this.packageName.replace(/\./g, '/');
+
   var srcDir = 'src/main/java/' + packageFolder;
-  var resourceDir = 'src/main/resources';
+  var testDir = 'src/test/java/' +packageFolder;
 
   var controllersDir = 'src/main/java/' + packageFolder + '/controller';
   var domainsDir = 'src/main/java/' + packageFolder + '/domain';
@@ -119,21 +105,19 @@ SpringGenerator.prototype.app = function app() {
   var configrationDir = 'src/main/java/' + packageFolder + '/configration';
   var interceptorDir = 'src/main/java/' + packageFolder + '/interceptor';
 
+  // Mkdir.
   mkdirp(srcDir);
+  mkdirp(testDir);
   mkdirp(controllersDir);
   mkdirp(domainsDir);
   mkdirp(commonDir);
   mkdirp(configrationDir);
   mkdirp(interceptorDir);
 
-  if ('gradle' === this.buildTool[0]) {
-    this.template('build.gradle', 'build.gradle');
-  }
-  if ('maven' === this.buildTool[0]) {
-    this.template('pom.xml', 'pom.xml');
-  }
-
+  // Template.
+  this.template('pom.xml', 'pom.xml');
   this.template('Application.java', srcDir + '/Application.java');
+  this.template('BaseTest.java', testDir + '/BaseTest.java');
   this.template('GsonUtil.java', commonDir + '/GsonUtil.java');
   this.template('LoginInterceptor.java', interceptorDir + '/LoginInterceptor.java');
   this.template('IndexViewController.java', controllersDir + '/IndexViewController.java');
@@ -143,14 +127,15 @@ SpringGenerator.prototype.app = function app() {
   this.config.set('packageFolder', packageFolder);
 };
 
+
+// Resource template copy.
 SpringGenerator.prototype.writing = function writing() {
   this.fs.copyTpl(
     this.templatePath('resources'),
     this.destinationPath('src/main/resources/'),
-    { baseName: this.baseName }
+    {baseName: this.baseName}
   );
 };
-
 
 SpringGenerator.prototype.projectfiles = function projectfiles() {
 };
