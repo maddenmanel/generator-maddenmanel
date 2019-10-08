@@ -99,8 +99,11 @@ SpringGenerator.prototype.app = function app() {
   var srcDir = 'src/main/java/' + packageFolder;
   var testDir = 'src/test/java/' +packageFolder;
 
-  var controllersDir = 'src/main/java/' + packageFolder + '/controller';
-  var domainsDir = 'src/main/java/' + packageFolder + '/domain';
+  var controllerDir = 'src/main/java/' + packageFolder + '/controller';
+  var serviceDir = 'src/main/java/' + packageFolder + '/service';
+  var serviceImplDir = 'src/main/java/' + packageFolder + '/service/impl';
+  var daoDir = 'src/main/java/' + packageFolder + '/dao';
+  var domainDir = 'src/main/java/' + packageFolder + '/domain';
   var commonDir = 'src/main/java/' + packageFolder + '/common';
   var configrationDir = 'src/main/java/' + packageFolder + '/configration';
   var interceptorDir = 'src/main/java/' + packageFolder + '/interceptor';
@@ -108,8 +111,11 @@ SpringGenerator.prototype.app = function app() {
   // Mkdir.
   mkdirp(srcDir);
   mkdirp(testDir);
-  mkdirp(controllersDir);
-  mkdirp(domainsDir);
+  mkdirp(controllerDir);
+  mkdirp(serviceDir);
+  mkdirp(serviceImplDir);
+  mkdirp(daoDir);
+  mkdirp(domainDir);
   mkdirp(commonDir);
   mkdirp(configrationDir);
   mkdirp(interceptorDir);
@@ -119,9 +125,21 @@ SpringGenerator.prototype.app = function app() {
   this.template('Application.java', srcDir + '/Application.java');
   this.template('BaseTest.java', testDir + '/BaseTest.java');
   this.template('GsonUtil.java', commonDir + '/GsonUtil.java');
+
+  // example
+  this.template('User.java', domainDir + '/User.java');
+  this.template('UserService.java', serviceDir + '/UserService.java');
+  this.template('UserServiceImpl.java', serviceImplDir + '/UserServiceImpl.java');
+  this.template('UserMapper.java', daoDir + '/UserMapper.java');
+  this.template('UserMapper.java', daoDir + '/UserMapper.java');
+
+  this.template('UserServiceTest.java', testDir + '/service/UserServiceTest.java');
+
+
+  // common
   this.template('LoginInterceptor.java', interceptorDir + '/LoginInterceptor.java');
-  this.template('IndexViewController.java', controllersDir + '/IndexViewController.java');
-  this.template('LoginViewController.java', controllersDir + '/LoginViewController.java');
+  this.template('IndexViewController.java', controllerDir + '/IndexViewController.java');
+  this.template('LoginViewController.java', controllerDir + '/LoginViewController.java');
 
   this.config.set('packageName', this.packageName);
   this.config.set('packageFolder', packageFolder);
@@ -133,7 +151,7 @@ SpringGenerator.prototype.writing = function writing() {
   this.fs.copyTpl(
     this.templatePath('resources'),
     this.destinationPath('src/main/resources/'),
-    {baseName: this.baseName}
+    {baseName: this.baseName, packageName: this.packageName}
   );
 };
 

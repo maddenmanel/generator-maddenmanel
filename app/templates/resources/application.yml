@@ -11,9 +11,9 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/example
-    username: test
-    password: test
+    url: jdbc:mysql://127.0.0.1:3306/test
+    username: root
+    password: yizeBXZTY|88417((
     driver-class-name: com.mysql.cj.jdbc.Driver
   cache:
     type: caffeine
