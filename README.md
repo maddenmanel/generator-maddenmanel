@@ -16,7 +16,7 @@ $ npm install -g yo
 $ npm install -g generator-unionstars
 ```
 
-**初始化一个开箱即用的后端服务中心工程!**
+**初始化一个开箱即用的后端服务中心工程**
 
 ```
 $ yo unionstars
@@ -24,14 +24,14 @@ $ yo unionstars
 _The interactive CLI menu will guide the way._
 
 
-## 初始化一个接口工程 
+**初始化一个接口工程**
 
 ```
 $ yo unionstars:api
 ```
 
 
-## 初始化一个前端网关工程 
+**初始化一个前端网关工程**
 
 ```
 $ yo unionstars:application
