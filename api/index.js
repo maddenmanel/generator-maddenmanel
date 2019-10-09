@@ -1,70 +1,85 @@
 'use strict';
 var util = require('util');
 var yeoman = require('yeoman-generator');
+var chalk = require('chalk');
 var mkdirp = require('mkdirp');
 
-var RestGenerator = module.exports = function RestGenerator(args, options, config) {
+var SpringGenerator = module.exports = function SpringGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 };
 
-util.inherits(RestGenerator, yeoman.generators.Base);
+util.inherits(SpringGenerator, yeoman.generators.Base);
 
-RestGenerator.prototype.askFor = function askFor() {
+SpringGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
+
+  console.log(chalk.green('\n.............DD88888888888888888,............\n' +
+    '...........:888888888888888888888,...........\n' +
+    '..........+88888888888888888888888+..........\n' +
+    '.........,8888888888888888888888888..........\n' +
+    '.........888888888888...888888888888.........\n' +
+    '.......,88888887..D88...88Z..88888888,.......\n' +
+    '.......8888888,...888...88D...=8888888.......\n' +
+    '......D888888,..$8888...88887...8888888......\n' +
+    '.....Z888888$..I88888...88888:..88888888,....\n' +
+    '....D8888888...888888...88888D..,88888888....\n' +
+    '....88888888,..888888..,888888...88888888....\n' +
+    '....88888888,..8888888$888888D..,88888888....\n' +
+    '....88888888I..Z8888888888888+..888888888....\n' +
+    '.....Z8888888...O888888888888..,88888888.....\n' +
+    '......88888888...,88888888D...,88888888......\n' +
+    '.......88888888=.....?I+.....I88888888.......\n' +
+    '.......,88888888D7.........ZD88888888,.......\n' +
+    '.........888888888888888888888888888.........\n' +
+    '.........,8888888888888888888888888..........\n' +
+    '..........+88888888888888888888888+..........\n' +
+    '...........,888888888888888888888:...........\n' +
+    '.............DD888888888888888DD.............\n' +
+    chalk.yellow('\nWelcome to the Spring Boot Generator\n\nLets get started!\n\n')));
+
 
   var prompts = [
     {
       type: 'string',
       name: 'packageName',
-      message: '(1/4) 请输入包名称:',
-      default: this.config.get('packageName')
-    },
-    {
+      message: '请输入包名:',
+      default: 'com.jdd'
+    }, {
       type: 'string',
-      name: 'representation',
-      message: '(2/4) Name for your representation class:',
-      default: 'MyThing'
-    },
-    {
-      type: 'string',
-      name: 'controllerName',
-      message: '(3/4) Name for your controller:',
-      default: 'MyController'
-    },
-    {
-      type: 'string',
-      name: 'controllerPath',
-      message: '(4/4) Path to Controller:',
-      default: '/hello-world'
+      name: 'baseName',
+      message: '请输入应用名称:',
+      default: 'app'
     }
-  ]
+  ];
 
   this.prompt(prompts, function (props) {
     this.packageName = props.packageName;
-    this.representation = props.representation;
-    this.controllerName = props.controllerName;
-    this.controllerPath = props.controllerPath;
+    this.baseName = props.baseName;
     cb();
   }.bind(this));
-
 };
 
-RestGenerator.prototype.files = function app() {
-  var packageFolder = this.packageName.replace(/\./g, '/');
-  var controllersDir = 'src/main/java/' + packageFolder + '/controller';
-  var domainsDir = 'src/main/java/' + packageFolder + '/domain';
-  var commonDir = 'src/main/java/' + packageFolder + '/common';
-  var configrationDir = 'src/main/java/' + packageFolder + '/configration';
-  var interceptorDir = 'src/main/java/' + packageFolder + '/interceptor';
+SpringGenerator.prototype.app = function app() {
+  var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.baseName;
 
-  mkdirp(controllersDir);
-  mkdirp(domainsDir);
-  mkdirp(commonDir);
-  mkdirp(configrationDir);
-  mkdirp(interceptorDir);
+  var srcDir = this.baseName + '/src/main/java/' + packageFolder;
+  var moDir = this.baseName + '/src/main/java/' + packageFolder + '/mo';
+  var facadeDir = this.baseName + '/src/main/java/' + packageFolder + '/facade';
 
-  this.template('Controller.java', controllersDir + '/' + this.controllerName + '.java');
-  this.template('Representation.java', domainsDir + '/' + this.representation + '.java');
+  // Mkdir.
+  mkdirp(srcDir);
+  mkdirp(moDir);
+  mkdirp(facadeDir);
+
+  // Template.
+  this.template('pom.xml', this.baseName + '/pom.xml');
+  this.template('Request.java', srcDir + '/Application.java');
+  this.template('Response.java', srcDir + '/Response.java');
 
   this.config.set('packageName', this.packageName);
+  this.config.set('packageFolder', packageFolder);
+};
+
+
+SpringGenerator.prototype.projectfiles = function projectfiles() {
 };
