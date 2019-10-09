@@ -11,13 +11,13 @@ A [Yeoman](http://yeoman.io) generator for scaffolding and bootstrapping [Spring
 
 ## 规范中默认约束的组件和版本
 
-| 组件 | 版本 |
-|---|---|
-|  spring-boot |2.1.7.RELEASE|
-|  jdk |1.8|
-|  lombok |1.18.8|
-|  gson |2.8.5|
-|  jsf |1.6.9|
+| 基础组件 | 版本           | 自研组件|版本|
+|---|---|---|---|
+|  spring-boot |2.1.7.RELEASE|  jsf |1.6.9|
+|  jdk |1.8|||
+|  lombok |1.18.8|||
+|  gson |2.8.5|||
+
 
 
 ## 快速开始
