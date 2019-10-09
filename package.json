@@ -12,7 +12,7 @@
     "email": "zhangxuegang@gmail.com",
     "url": "https://github.com/unionstars"
   },
-  "main": "server/index.js",
+  "main": "app/index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/unionstars/generator-unionstars.git"
