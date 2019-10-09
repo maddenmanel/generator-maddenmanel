@@ -5,7 +5,7 @@ var assert  = require('assert');
 
 describe('spring generator', function () {
   it('can be imported without blowing up', function () {
-    var app = require('../app');
+    var app = require('../server');
     assert(app !== undefined);
   });
 });
