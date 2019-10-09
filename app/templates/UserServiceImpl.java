@@ -1,8 +1,8 @@
-package <%=packageName%>.service.impl;
+package <%=packageName%>.<%=baseName%>.service.impl;
 
-import <%=packageName%>.dao.UserMapper;
-import <%=packageName%>.domain.User;
-import com.jdd.service.UserService;
+import <%=packageName%>.<%=baseName%>.dao.UserMapper;
+import <%=packageName%>.<%=baseName%>.domain.User;
+import <%=packageName%>.<%=baseName%>.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
-package <%=packageName%>.service;
+package <%=packageName%>.<%=baseName%>.service;
 
-import <%=packageName%>.domain.User;
+import <%=packageName%>.<%=baseName%>.domain.User;
 
 public interface UserService {
 

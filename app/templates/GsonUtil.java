@@ -1,4 +1,4 @@
-package <%=packageName%>.common;
+package <%=packageName%>.<%=baseName%>.common;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

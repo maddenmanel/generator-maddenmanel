@@ -1,8 +1,8 @@
-package <%=packageName%>.service;
+package <%=packageName%>.<%=baseName%>.service;
 
-import <%=packageName%>.BaseTest;
-import <%=packageName%>.domain.User;
-import <%=packageName%>.service.UserService;
+import <%=packageName%>.<%=baseName%>.BaseTest;
+import <%=packageName%>.<%=baseName%>.domain.User;
+import <%=packageName%>.<%=baseName%>.service.UserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

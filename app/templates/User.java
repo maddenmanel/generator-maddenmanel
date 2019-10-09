@@ -1,4 +1,4 @@
-package <%=packageName%>.domain;
+package <%=packageName%>.<%=baseName%>.domain;
 
 import lombok.Data;
 
