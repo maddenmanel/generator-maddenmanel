@@ -122,6 +122,7 @@ SpringGenerator.prototype.app = function app() {
 
   // Template.
   this.template('pom.xml', this.baseName + '/pom.xml');
+  this.template('.gitignore', this.baseName + '/.gitignore');
   this.template('Application.java', srcDir + '/Application.java');
   this.template('BaseTest.java', testDir + '/BaseTest.java');
   this.template('GsonUtil.java', commonDir + '/GsonUtil.java');
