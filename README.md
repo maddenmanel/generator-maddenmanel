@@ -2,21 +2,21 @@
 
 A [Yeoman](http://yeoman.io) generator for scaffolding and bootstrapping [Spring Boot](http://projects.spring.io/spring-boot/) and [Spring Cloud](http://projects.spring.io/spring-cloud/) applications. Provides the same selectable options as [Spring Initializr](http://start.spring.io), but with and interactive CLI interface so your hands can stay where they belong, on the keyboard!
 
-## Getting Started
+## 快速开始
 
-**Install Yeoman**
+**安装 Yeoman**
 
 ```
 $ npm install -g yo
 ```
 
-**Install generator-unionstars**
+**安装 generator-unionstars**
 
 ```
 $ npm install -g generator-unionstars
 ```
 
-**Initiate spring-generator!**
+**初始化一个开箱即用的后端服务中心工程!**
 
 ```
 $ yo unionstars
@@ -24,29 +24,21 @@ $ yo unionstars
 _The interactive CLI menu will guide the way._
 
 
-### Extras (Sub-generators)
-Creates a REST endpoint
+## 初始化一个接口工程 
 
 ```
-$ yo spring:rest
+$ yo unionstars:api
 ```
 
-Creates a REST endpoint with HATEOAS support *(has dependency on choosing the hateoas starter option)*
+
+## 初始化一个前端网关工程 
 
 ```
-$ yo spring:hateoas
-```
-
-Creates an initial Thymeleaf view *(has dependency on choosing the Thyemleaf starter option)*
-
-```
-$ yo spring:route
+$ yo unionstars:application
 ```
 
 ## TODO
-- Add the new Spring Cloud libs supported with Spring Boot 1.5.x
-- Add support for createing a serverless (AWS) project with Spring Cloud Function. 
-- Add React support. This will essentially scaffold an opinionated react SPA (webpack/es6/material-ui) as the front end.
+
 
 ## License
 
