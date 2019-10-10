@@ -3,7 +3,7 @@ info:
 
 spring:
   application:
-    name: <%= baseName %>
+    name: <%= systemName %>
   profiles:
     active: ${spring.profiles.active}
   thymeleaf:

@@ -46,7 +46,7 @@ SpringGenerator.prototype.askFor = function askFor() {
       default: 'com.jdd'
     }, {
       type: 'string',
-      name: 'baseName',
+      name: 'systemName',
       message: '请输入应用名称:',
       default: 'app'
     }
@@ -54,17 +54,17 @@ SpringGenerator.prototype.askFor = function askFor() {
 
   this.prompt(prompts, function (props) {
     this.packageName = props.packageName;
-    this.baseName = props.baseName;
+    this.systemName = props.systemName;
     cb();
   }.bind(this));
 };
 
 SpringGenerator.prototype.app = function app() {
-  var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.baseName;
+  var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.systemName;
 
-  var srcDir = this.baseName + '/src/main/java/' + packageFolder;
-  var moDir = this.baseName + '/src/main/java/' + packageFolder + '/mo';
-  var facadeDir = this.baseName + '/src/main/java/' + packageFolder + '/facade';
+  var srcDir = this.systemName + '/src/main/java/' + packageFolder;
+  var moDir = this.systemName + '/src/main/java/' + packageFolder + '/mo';
+  var facadeDir = this.systemName + '/src/main/java/' + packageFolder + '/facade';
 
   // Mkdir.
   mkdirp(srcDir);
@@ -72,8 +72,8 @@ SpringGenerator.prototype.app = function app() {
   mkdirp(facadeDir);
 
   // Template.
-  this.template('pom.xml', this.baseName + '/pom.xml');
-  this.template('Request.java', srcDir + '/Application.java');
+  this.template('pom.xml', this.systemName + '/pom.xml');
+  this.template('Request.java', srcDir + '/Request.java');
   this.template('Response.java', srcDir + '/Response.java');
 
   this.config.set('packageName', this.packageName);

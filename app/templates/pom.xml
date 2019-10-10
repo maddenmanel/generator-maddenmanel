@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId><%=packageName%></groupId>
-    <artifactId><%= baseName %></artifactId>
+    <artifactId><%= systemName %></artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <% if (jar) { %><packaging>jar</packaging><% } %><% if (war) { %><packaging>war</packaging><% } %>
-    <name><%= baseName %></name>
+    <name><%= systemName %></name>
     <description>A project used generator-unionstars project</description>
 
     <parent>

@@ -1,9 +1,14 @@
-package com.jdd.merchant.contract.api;
+package <%=packageName%>.<%=baseName%>;
 
-import com.jdd.merchant.contract.api.enums.RequestOriginEnum;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Request<T> {
 	private T data;
 }

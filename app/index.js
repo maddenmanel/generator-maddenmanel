@@ -3,6 +3,7 @@ var util = require('util');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var mkdirp = require('mkdirp');
+const fse = require('fs-extra');
 
 var SpringGenerator = module.exports = function SpringGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
@@ -51,8 +52,8 @@ SpringGenerator.prototype.askFor = function askFor() {
       default: 'com.jdd'
     }, {
       type: 'string',
-      name: 'baseName',
-      message: '请输入应用名称:',
+      name: 'systemName',
+      message: '请输入系统名称:',
       default: 'app'
     }, {
       type: 'string',
@@ -78,9 +79,10 @@ SpringGenerator.prototype.askFor = function askFor() {
   this.prompt(prompts, function (props) {
     this.bootVersion = props.bootVersion;
     this.packageName = props.packageName;
-    this.baseName = props.baseName;
+    this.systemName = props.systemName;
     this.javaVersion = props.javaVersion;
     this.packagingType = props.packagingType;
+    this.baseName = this.systemName.replace('-','.').replace('_','.');
 
     // Packaging Type
     var hasPackagingType = function (packagingTypeStarter) {
@@ -94,19 +96,19 @@ SpringGenerator.prototype.askFor = function askFor() {
 };
 
 SpringGenerator.prototype.app = function app() {
-  var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.baseName.replace('-','/').replace('_','/');
+  var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.baseName.replace('.','/');
 
-  var srcDir = this.baseName + '/src/main/java/' + packageFolder;
-  var testDir = this.baseName + '/src/test/java/' +packageFolder;
+  var srcDir = this.systemName + '/src/main/java/' + packageFolder;
+  var testDir = this.systemName + '/src/test/java/' +packageFolder;
 
-  var controllerDir = this.baseName + '/src/main/java/' + packageFolder + '/controller';
-  var serviceDir = this.baseName + '/src/main/java/' + packageFolder + '/service';
-  var serviceImplDir = this.baseName + '/src/main/java/' + packageFolder + '/service/impl';
-  var daoDir = this.baseName + '/src/main/java/' + packageFolder + '/dao';
-  var domainDir = this.baseName + '/src/main/java/' + packageFolder + '/domain';
-  var commonDir = this.baseName + '/src/main/java/' + packageFolder + '/common';
-  var configrationDir = this.baseName + '/src/main/java/' + packageFolder + '/configration';
-  var interceptorDir = this.baseName + '/src/main/java/' + packageFolder + '/interceptor';
+  var controllerDir = this.systemName + '/src/main/java/' + packageFolder + '/controller';
+  var serviceDir = this.systemName + '/src/main/java/' + packageFolder + '/service';
+  var serviceImplDir = this.systemName + '/src/main/java/' + packageFolder + '/service/impl';
+  var daoDir = this.systemName + '/src/main/java/' + packageFolder + '/dao';
+  var domainDir = this.systemName + '/src/main/java/' + packageFolder + '/domain';
+  var commonDir = this.systemName + '/src/main/java/' + packageFolder + '/common';
+  var configrationDir = this.systemName + '/src/main/java/' + packageFolder + '/configration';
+  var interceptorDir = this.systemName + '/src/main/java/' + packageFolder + '/interceptor';
 
   // Mkdir.
   mkdirp(srcDir);
@@ -121,7 +123,7 @@ SpringGenerator.prototype.app = function app() {
   mkdirp(interceptorDir);
 
   // Template.
-  this.template('pom.xml', this.baseName + '/pom.xml');
+  this.template('pom.xml', this.systemName + '/pom.xml');
   this.template('Application.java', srcDir + '/Application.java');
   this.template('BaseTest.java', testDir + '/BaseTest.java');
   this.template('GsonUtil.java', commonDir + '/GsonUtil.java');
@@ -150,10 +152,17 @@ SpringGenerator.prototype.app = function app() {
 SpringGenerator.prototype.writing = function writing() {
   this.fs.copyTpl(
     this.templatePath('resources'),
-    this.destinationPath(this.baseName + '/src/main/resources/'),
-    {baseName: this.baseName, packageName: this.packageName}
+    this.destinationPath(this.systemName + '/src/main/resources/'),
+    {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
+  );
+
+  this.fs.copyTpl(
+    this.templatePath('ignore'),
+    this.destinationPath(this.systemName + '/'),
+    {}
   );
 };
+
 
 SpringGenerator.prototype.projectfiles = function projectfiles() {
 };
