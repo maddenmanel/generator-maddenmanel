@@ -4,7 +4,7 @@ A [Yeoman](http://yeoman.io) generator for scaffolding and bootstrapping [Spring
 
 ## 适用对象
 
-减少工程创建时大量的重复工作、统一代码风格，提供开发样例、对maven仓库的依赖进行统一约束，并提供非springboot生态下的自研中间件的starter组件，以实现完整的开箱即用体验。
+减少工程创建时大量的重复工作、统一代码风格、提供开发样例、对maven仓库的依赖进行统一约束，并提供非springboot生态下的自研中间件的starter组件，以实现完整的开箱即用体验。
 
 ## 规范中默认约束的组件和版本
 

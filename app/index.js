@@ -124,6 +124,7 @@ SpringGenerator.prototype.app = function app() {
 
   // Template.
   this.template('pom.xml', this.systemName + '/pom.xml');
+  // this.template('.gitignore', this.systemName + '/.gitignore');
   this.template('Application.java', srcDir + '/Application.java');
   this.template('BaseTest.java', testDir + '/BaseTest.java');
   this.template('GsonUtil.java', commonDir + '/GsonUtil.java');
@@ -154,12 +155,6 @@ SpringGenerator.prototype.writing = function writing() {
     this.templatePath('resources'),
     this.destinationPath(this.systemName + '/src/main/resources/'),
     {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
-  );
-
-  this.fs.copyTpl(
-    this.templatePath('ignore'),
-    this.destinationPath(this.systemName + '/'),
-    {}
   );
 };
 
