@@ -8,14 +8,14 @@ import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication(scanBasePackages = {"<%=packageName%>"})
 @ImportResource(value = {"classpath:spring/spring-config.xml"})
-public class Application extends SpringBootServletInitializer{
+public class RestApplication extends SpringBootServletInitializer{
 
   @Override
   public SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-    return builder.sources(Application.class);
+    return builder.sources(RestApplication.class);
   }
 
   public static void main(String[] args) {
-    SpringApplication.run(Application.class, args);
+    SpringApplication.run(RestApplication.class, args);
   }
 }

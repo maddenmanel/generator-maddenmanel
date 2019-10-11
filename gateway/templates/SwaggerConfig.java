@@ -33,8 +33,8 @@ public class SwaggerConfig {
     return new ApiInfoBuilder()
       .title("<%= systemName %>")
       .description("<%= systemName %> API 操作文档")
-      .termsOfServiceUrl("https://unionstars.github.io/")
-      .contact(new Contact("", "https://unionstars.github.io/", "zhangxuegang@gmail.com"))
+//      .termsOfServiceUrl("https://unionstars.github.io/")
+//      .contact(new Contact("", "https://unionstars.github.io/", "zhangxuegang@gmail.com"))
       .version("1.0")
       .build();
   }
