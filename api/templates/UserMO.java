@@ -12,7 +12,7 @@ public class UserMO implements Serializable {
     /**
      * 主键
      */
-    public Integer id;
+    public Long id;
 
     /**
      * 姓名

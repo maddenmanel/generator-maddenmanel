@@ -41,6 +41,11 @@ SpringGenerator.prototype.askFor = function askFor() {
   var prompts = [
     {
       type: 'string',
+      name: 'bootVersion',
+      message: '请输入Spring Boot的版本:',
+      default: '2.1.8.RELEASE'
+    },{
+      type: 'string',
       name: 'packageName',
       message: '请输入包名:',
       default: 'com.jdd'
@@ -49,13 +54,41 @@ SpringGenerator.prototype.askFor = function askFor() {
       name: 'systemName',
       message: '请输入应用名称:',
       default: 'app'
-    }
+    }, {
+      type: 'string',
+      name: 'javaVersion',
+      message: '请输入Java的版本:',
+      default: '1.8'
+    }, {
+      type: 'checkbox',
+      name: 'packagingType',
+      message: '请输入打包类型:',
+      choices: [
+        {
+          name: 'Jar',
+          value: 'jar'
+        }, {
+          name: 'War',
+          value: 'war'
+        }
+      ]
+    },
   ];
 
   this.prompt(prompts, function (props) {
+    this.bootVersion = props.bootVersion;
     this.packageName = props.packageName;
     this.systemName = props.systemName;
+    this.javaVersion = props.javaVersion;
+    this.packagingType = props.packagingType;
     this.baseName = this.systemName.replace('-','.').replace('_','.');
+
+    // Packaging Type
+    var hasPackagingType = function (packagingTypeStarter) {
+      return props.packagingType.indexOf(packagingTypeStarter) !== -1;
+    };
+    this.jar = hasPackagingType('jar');
+    this.war = hasPackagingType('war');
     cb();
   }.bind(this));
 };
@@ -64,19 +97,29 @@ SpringGenerator.prototype.app = function app() {
   var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.baseName.replace('.','/');
 
   var srcDir = this.systemName + '/src/main/java/' + packageFolder;
+  var testDir = this.systemName + '/src/test/java/' +packageFolder;
+
   var configDir = this.systemName + '/src/main/java/' + packageFolder + '/config';
-  var controllerDir = this.systemName + '/src/main/java/' + packageFolder + '/controllerDir';
+  var controllerDir = this.systemName + '/src/main/java/' + packageFolder + '/controller';
+  var modelDir = this.systemName + '/src/main/java/' + packageFolder + '/model';
 
   // Mkdir.
   mkdirp(srcDir);
+  mkdirp(testDir);
+
   mkdirp(configDir);
   mkdirp(controllerDir);
+  mkdirp(modelDir);
 
   // Template.
   this.template('pom.xml', this.systemName + '/pom.xml');
+  this.template('RestApplication.java', srcDir + '/RestApplication.java');
   this.template('BaseResult.java', configDir + '/BaseResult.java');
   this.template('SwaggerConfig.java', configDir + '/SwaggerConfig.java');
   this.template('UserController.java', controllerDir + '/UserController.java');
+  this.template('User.java', modelDir + '/User.java');
+  this.template('BaseTest.java', testDir + '/BaseTest.java');
+  this.template('UserControllerTest.java', testDir + '/controller/UserControllerTest.java');
 
   this.config.set('packageName', this.packageName);
   this.config.set('packageFolder', packageFolder);

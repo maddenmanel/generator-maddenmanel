@@ -6,7 +6,7 @@ statusListener(OnConsoleStatusListener)
 
 def PATTERN = "%d{yyyy-MM-dd HH:mm:ss.SSS} [%-25thread] [%X{ip},%X{traceId},%X{appName}] %-5level %logger{36}.%M\\(%line\\) - %msg%n"
 
-def PATH = "/export//Logs/<%= systemName %>"
+def PATH = "D://export//logs//<%= systemName %>"
 
 appender("CONSOLE", ConsoleAppender) {
     encoder(PatternLayoutEncoder) {

@@ -1,4 +1,4 @@
-package <%=packageName%>.<%=baseName%>;
+package <%=packageName%>.<%=baseName%>.config;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
