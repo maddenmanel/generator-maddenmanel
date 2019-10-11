@@ -1,0 +1,12 @@
+info:
+  version: 0.0.1
+
+spring:
+  application:
+    name: <%= systemName %>
+  profiles:
+    active: ${spring.profiles.active}
+  cache:
+    type: caffeine
+swagger2:
+  enable: true

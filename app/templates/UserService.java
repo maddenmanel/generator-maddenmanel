@@ -5,4 +5,6 @@ import <%=packageName%>.<%=baseName%>.domain.User;
 public interface UserService {
 
   void insert(User user);
+
+  User getOne(Integer id);
 }

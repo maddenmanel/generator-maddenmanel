@@ -30,14 +30,14 @@ $ yo unionstars
 _The interactive CLI menu will guide the way._
 
 
-**初始化一个接口工程**
+**初始化一个接口工程(Jsf)**
 
 ```
 $ yo unionstars:api
 ```
 
 
-**初始化一个前端网关工程**
+**初始化一个前端网关工程(Rest)**
 
 ```
 $ yo unionstars:application

@@ -76,6 +76,8 @@ SpringGenerator.prototype.app = function app() {
   this.template('pom.xml', this.systemName + '/pom.xml');
   this.template('Request.java', srcDir + '/Request.java');
   this.template('Response.java', srcDir + '/Response.java');
+  this.template('UserMO.java', moDir + '/UserMO.java');
+  this.template('UserServiceProvider.java', facadeDir + '/UserServiceProvider.java');
 
   this.config.set('packageName', this.packageName);
   this.config.set('packageFolder', packageFolder);

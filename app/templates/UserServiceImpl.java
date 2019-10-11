@@ -18,4 +18,10 @@ public class UserServiceImpl implements UserService {
   public void insert(User user) {
     userMapper.insert(user);
   }
+
+  @Override
+  public User getOne(Integer id){
+    return userMapper.getOne(id);
+  }
+
 }
