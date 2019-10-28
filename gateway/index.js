@@ -81,7 +81,7 @@ SpringGenerator.prototype.askFor = function askFor() {
     this.systemName = props.systemName;
     this.javaVersion = props.javaVersion;
     this.packagingType = props.packagingType;
-    this.baseName = this.systemName.replace('-','.').replace('_','.');
+    this.baseName = this.systemName.replaceAll('-','.').replaceAll('_','.');
 
     // Packaging Type
     var hasPackagingType = function (packagingTypeStarter) {
@@ -94,7 +94,7 @@ SpringGenerator.prototype.askFor = function askFor() {
 };
 
 SpringGenerator.prototype.app = function app() {
-  var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.baseName.replace('.','/');
+  var packageFolder = this.packageName.replaceAll(/\./g, '/') + '/' + this.baseName.replaceAll('.','/');
 
   var srcDir = this.systemName + '/src/main/java/' + packageFolder;
   var testDir = this.systemName + '/src/test/java/' +packageFolder;
