@@ -82,7 +82,7 @@ SpringGenerator.prototype.askFor = function askFor() {
     this.systemName = props.systemName;
     this.javaVersion = props.javaVersion;
     this.packagingType = props.packagingType;
-    this.baseName = this.systemName.replaceAll('-','.').replaceAll('_','.');
+    this.baseName = this.systemName.replace(/\-/g,'.').replace(/\_/g,'.');
 
     // Packaging Type
     var hasPackagingType = function (packagingTypeStarter) {
@@ -96,7 +96,7 @@ SpringGenerator.prototype.askFor = function askFor() {
 };
 
 SpringGenerator.prototype.app = function app() {
-  var packageFolder = this.packageName.replaceAll(/\./g, '/') + '/' + this.baseName.replaceAll('.','/');
+  var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.baseName.replace('.','/');
 
   var srcDir = this.systemName + '/src/main/java/' + packageFolder;
   var testDir = this.systemName + '/src/test/java/' +packageFolder;
@@ -157,6 +157,9 @@ SpringGenerator.prototype.writing = function writing() {
     {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
   );
 };
+
+
+
 
 
 SpringGenerator.prototype.projectfiles = function projectfiles() {

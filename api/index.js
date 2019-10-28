@@ -55,13 +55,13 @@ SpringGenerator.prototype.askFor = function askFor() {
   this.prompt(prompts, function (props) {
     this.packageName = props.packageName;
     this.systemName = props.systemName;
-    this.baseName = this.systemName.replaceAll('-','.').replaceAll('_','.');
+    this.baseName = this.systemName.replace(/\-/g,'.').replace(/\_/g,'.');
     cb();
   }.bind(this));
 };
 
 SpringGenerator.prototype.app = function app() {
-  var packageFolder = this.packageName.replaceAll(/\./g, '/') + '/' + this.baseName.replaceAll('.','/');
+  var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.baseName.replace('.','/');
 
   var srcDir = this.systemName + '/src/main/java/' + packageFolder;
   var moDir = this.systemName + '/src/main/java/' + packageFolder + '/mo';
