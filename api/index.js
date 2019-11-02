@@ -61,7 +61,7 @@ SpringGenerator.prototype.askFor = function askFor() {
 };
 
 SpringGenerator.prototype.app = function app() {
-  var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.baseName.replace('.','/');
+  var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.baseName.replace(/\./g,'/');
 
   var srcDir = this.systemName + '/src/main/java/' + packageFolder;
   var moDir = this.systemName + '/src/main/java/' + packageFolder + '/mo';

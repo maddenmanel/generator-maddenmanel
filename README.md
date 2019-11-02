@@ -2,7 +2,7 @@
 
 A [Yeoman](http://yeoman.io) generator for scaffolding and bootstrapping [Spring Boot](http://projects.spring.io/spring-boot/) applications. Provides the same selectable options as [Spring Initializr](http://start.spring.io), but with and interactive CLI interface so your hands can stay where they belong, on the keyboard!
 
-The tool build by this article [Think in Clean Architecture](https://unionstars.github.io/yeoman/generator_unionstars/), now enjoy it.
+The tool build by this article [Think in Clean Architecture](https://unionstars.github.io/tool/generator_unionstars/), now enjoy it.
 
 ## Getting Started
 
