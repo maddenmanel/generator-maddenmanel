@@ -20,7 +20,8 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public User getOne(Integer id){
+  @Cacheable(value = "<%= systemName %>", key = "'getOne_' + #id", unless = "#result == null")
+  public User getOne(Long id){
     return userMapper.getOne(id);
   }
 

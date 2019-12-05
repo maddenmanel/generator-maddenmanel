@@ -7,15 +7,17 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="age" property="age" jdbcType="BIGINT" />
     <result column="addr" property="addr" jdbcType="VARCHAR"/>
+    <result column="created" property="created" jdbcType="DATE"/>
+    <result column="modified" property="modified" jdbcType="DATE"/>
   </resultMap>
 
   <sql id="Base_Column_List" >
-    id, name, age, addr
+    id, name, age, addr, created, modified
   </sql>
 
   <insert id="insert" parameterType="<%=packageName%>.<%=baseName%>.domain.User">
-    INSERT INTO t_user (name, age, addr)
-    VALUES (#{name}, #{age}, #{addr})
+    INSERT INTO t_user (name, age, addr, created, modified)
+    VALUES (#{name}, #{age}, #{addr}, now(), now())
   </insert>
 
   <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >

@@ -1,6 +1,6 @@
 {
   "name": "generator-unionstars",
-  "version": "1.0.33",
+  "version": "1.0.35",
   "description": "A Yeoman Generator for Spring Boot and Spring Cloud",
   "keywords": [
     "yeoman-generator"
@@ -29,7 +29,10 @@
     "mocha": "~3.1.2"
   },
   "files": [
-    "app","api","gateway",".gitignore"
+    "app",
+    "api",
+    "gateway",
+    ".gitignore"
   ],
   "licenses": [
     {

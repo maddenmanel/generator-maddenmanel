@@ -8,5 +8,5 @@ public interface UserMapper {
 
   void insert(User user);
 
-  User getOne(Integer id);
+  User getOne(Long id);
 }

@@ -96,8 +96,7 @@ SpringGenerator.prototype.askFor = function askFor() {
 };
 
 SpringGenerator.prototype.app = function app() {
-  var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.baseName.replace(/\\./g,'/');
-
+  var packageFolder = this.packageName.replace(/\./g, '/')+'/' + this.systemName.replace(/\-/g,'/').replace(/\_/g,'/');
   var srcDir = this.systemName + '/src/main/java/' + packageFolder;
   var testDir = this.systemName + '/src/test/java/' +packageFolder;
 
@@ -109,6 +108,9 @@ SpringGenerator.prototype.app = function app() {
   var commonDir = this.systemName + '/src/main/java/' + packageFolder + '/common';
   var configrationDir = this.systemName + '/src/main/java/' + packageFolder + '/configration';
   var interceptorDir = this.systemName + '/src/main/java/' + packageFolder + '/interceptor';
+  var constantsDir = this.systemName + '/src/main/java/' + packageFolder + '/constants';
+  var exceptionDir = this.systemName + '/src/main/java/' + packageFolder + '/exception';
+  var producerDir = this.systemName + '/src/main/java/' + packageFolder + '/jmq/producer';
 
   // Mkdir.
   mkdirp(srcDir);
@@ -121,6 +123,9 @@ SpringGenerator.prototype.app = function app() {
   mkdirp(commonDir);
   mkdirp(configrationDir);
   mkdirp(interceptorDir);
+  mkdirp(constantsDir);
+  mkdirp(exceptionDir);
+  mkdirp(producerDir);
 
   // Template.
   this.template('pom.xml', this.systemName + '/pom.xml');
@@ -128,6 +133,13 @@ SpringGenerator.prototype.app = function app() {
   this.template('Application.java', srcDir + '/Application.java');
   this.template('BaseTest.java', testDir + '/BaseTest.java');
   this.template('GsonUtil.java', commonDir + '/GsonUtil.java');
+  this.template('UMPCaller.java', commonDir + '/UMPCaller.java');
+  this.template('VoidCaller.java', commonDir + '/VoidCaller.java');
+
+  this.template('CacheConfig.java', configrationDir + '/CacheConfig.java');
+  this.template('UmpConstants.java', constantsDir + '/UmpConstants.java');
+  this.template('JmqSendException.java', exceptionDir + '/JmqSendException.java');
+  this.template('JmqProducer.java', producerDir + '/JmqProducer.java');
 
   // example
   this.template('User.java', domainDir + '/User.java');
@@ -138,14 +150,13 @@ SpringGenerator.prototype.app = function app() {
 
   this.template('UserServiceTest.java', testDir + '/service/UserServiceTest.java');
 
-
   // common
   this.template('LoginInterceptor.java', interceptorDir + '/LoginInterceptor.java');
   this.template('IndexViewController.java', controllerDir + '/IndexViewController.java');
   this.template('LoginViewController.java', controllerDir + '/LoginViewController.java');
 
   this.config.set('packageName', this.packageName);
-  this.config.set('packageFolder', packageFolder);
+  this.config.set('packageFolder', this.packageFolder);
 };
 
 
@@ -157,9 +168,6 @@ SpringGenerator.prototype.writing = function writing() {
     {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
   );
 };
-
-
-
 
 
 SpringGenerator.prototype.projectfiles = function projectfiles() {

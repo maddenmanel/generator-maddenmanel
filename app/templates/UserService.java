@@ -6,5 +6,5 @@ public interface UserService {
 
   void insert(User user);
 
-  User getOne(Integer id);
+  User getOne(Long id);
 }
