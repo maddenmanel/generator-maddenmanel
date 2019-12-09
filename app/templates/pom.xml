@@ -52,14 +52,9 @@
         <version>2.1.0</version>
       </dependency>
       <dependency>
-        <groupId>com.jdd</groupId>
-        <artifactId>jdd-spring-boot-starter-r2m</artifactId>
-        <version>1.0-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>com.jdd</groupId>
-        <artifactId>jdd-spring-boot-starter-jmq</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>com.jdd.spring.boot</groupId>
+        <artifactId>jdd-spring-boot-starter</artifactId>
+        <version>1.1.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.jdd.common</groupId>
