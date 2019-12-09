@@ -43,7 +43,7 @@ jdd:
     apps:
       - transport:
           id: <%= systemName %>_transport
-          app: <%= systemName %>
+          app: splitaccount
           address: 192.168.166.40:50088
           user: splitaccount
           password: 8B8A5C9D
@@ -51,4 +51,10 @@ jdd:
         producers:
           - id: splitAccountProducer
             retryTimes: 3
-
+        consumers:
+          - id: splitaccount-clearing-center_consumer
+            longPull: 5000
+            pullInterval: 10000
+            listeners:
+              - topic: test
+                listenerBeanName: userAddListener #消费者的springbean的名称

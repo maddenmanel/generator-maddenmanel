@@ -3,7 +3,6 @@ var util = require('util');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var mkdirp = require('mkdirp');
-const fse = require('fs-extra');
 
 var SpringGenerator = module.exports = function SpringGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
@@ -111,6 +110,7 @@ SpringGenerator.prototype.app = function app() {
   var constantsDir = this.systemName + '/src/main/java/' + packageFolder + '/constants';
   var exceptionDir = this.systemName + '/src/main/java/' + packageFolder + '/exception';
   var producerDir = this.systemName + '/src/main/java/' + packageFolder + '/jmq/producer';
+  var consumerDir = this.systemName + '/src/main/java/' + packageFolder + '/jmq/consumer';
 
   // Mkdir.
   mkdirp(srcDir);
@@ -126,6 +126,7 @@ SpringGenerator.prototype.app = function app() {
   mkdirp(constantsDir);
   mkdirp(exceptionDir);
   mkdirp(producerDir);
+  mkdirp(consumerDir)
 
   // Template.
   this.template('pom.xml', this.systemName + '/pom.xml');
@@ -143,6 +144,7 @@ SpringGenerator.prototype.app = function app() {
   this.template('UmpConstants.java', constantsDir + '/UmpConstants.java');
   this.template('JmqSendException.java', exceptionDir + '/JmqSendException.java');
   this.template('JmqProducer.java', producerDir + '/JmqProducer.java');
+  this.template('UserAddListener.java', consumerDir + '/jmq/consumer/UserAddListener.java');
 
   // example
   this.template('User.java', domainDir + '/User.java');
