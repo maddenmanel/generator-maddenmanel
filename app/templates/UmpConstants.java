@@ -1,4 +1,4 @@
-package<%=packageName%>.<%=baseName%>.constants;
+package <%=packageName%>.<%=baseName%>.constants;
 
 public final class UmpConstants {
   public static final String UMP_APP_KEY = "<%= systemName %>";

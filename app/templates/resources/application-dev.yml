@@ -27,7 +27,7 @@ spring:
       zkTimeout: 25000
     clusters[0]:               #spring.r2m.cluster开头的配置用于配置集群并创建R2M原生客户端
       id: client1
-      appName: <%= systemName %>
+      appName: account-man-standalone
       maxRedirections: 5
       redisTimeOut: 500
 

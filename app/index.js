@@ -144,7 +144,8 @@ SpringGenerator.prototype.app = function app() {
   this.template('UmpConstants.java', constantsDir + '/UmpConstants.java');
   this.template('JmqSendException.java', exceptionDir + '/JmqSendException.java');
   this.template('JmqProducer.java', producerDir + '/JmqProducer.java');
-  this.template('UserAddListener.java', consumerDir + '/jmq/consumer/UserAddListener.java');
+  this.template('UserAddListener.java', consumerDir + '/UserAddListener.java');
+  this.template('BaseJmqMessageListener.java', consumerDir + '/BaseJmqMessageListener.java');
 
   // example
   this.template('User.java', domainDir + '/User.java');

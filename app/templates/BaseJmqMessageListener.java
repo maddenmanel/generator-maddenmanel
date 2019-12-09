@@ -1,8 +1,8 @@
-package <%=packageName%>.<%=baseName%>.jmq.listener;
+package <%=packageName%>.<%=baseName%>.jmq.consumer;
 
 import com.jd.jmq.client.consumer.MessageListener;
 import com.jd.jmq.common.message.Message;
-import <%=packageName%>.<%=baseName%>..common.UMPCaller;
+import <%=packageName%>.<%=baseName%>.common.UMPCaller;
 import <%=packageName%>.<%=baseName%>.constants.UmpConstants;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
