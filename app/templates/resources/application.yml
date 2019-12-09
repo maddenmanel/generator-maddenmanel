@@ -17,9 +17,38 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   cache:
     type: caffeine
+    r2m:                      #spring.r2m为根节点
+      enabled: true           #spring.r2m.enabled只有配置该配置并且设置为true才会开启r2m的自动注入，类的实例化名字为 [clusters.id]
+      expand: true           #spring.r2m.expand为true时注入扩展的客户端类 R2mExtClient，类的实例化名字为 "ext" +  [clusters.id](首字母大写)
+      pool:
+        maxWaitMillis: 500
+      provider:               #spring.r2m.provider开头的配置用于配置provider
+        zkConnectionStr: 172.25.46.201:2181,172.25.46.221:2181,172.25.46.241:2181
+        zkTimeout: 25000
+      clusters[0]:               #spring.r2m.cluster开头的配置用于配置集群并创建R2M原生客户端
+        id: cacheClusterClient
+        appName: <%= systemName %>
+        maxRedirections: 5
+        redisTimeOut: 500
 
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
     default-statement-timeout: 10
   mapper-locations: classpath:mapper/*.xml
+
+jdd:
+  jmq:
+    enabled: true
+    apps:
+      - transport:
+          id: <%= systemName %>_transport
+          app: <%= systemName %>
+          address: 192.168.166.40:50088
+          user: splitaccount
+          password: 8B8A5C9D
+          epoll: true
+        producers:
+          - id: testProducer
+            retryTimes: 3
+

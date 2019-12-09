@@ -14,7 +14,7 @@ import static com.jdd.splitaccount.clearing.center.common.UMPCaller.callWithTp;
 @Slf4j
 public class JmqProducer {
     @Autowired
-    private Producer producer;
+    private Producer splitAccountProducer;
 
     public void send(Object businessId, String topic, String text) {
         send(businessId, topic, text, true);
@@ -23,7 +23,7 @@ public class JmqProducer {
     public void send(Object businessId, String topic, String text, boolean exceptionFlag) {
         callWithTp("<%= systemName %>.jmq.send", ()->{
             try {
-                producer.send(new Message(topic, text, businessId.toString()));
+              splitAccountProducer.send(new Message(topic, text, businessId.toString()));
             } catch (JMQException e) {
                 log.error("topic:{} businessId:{} text:{}", topic, businessId, text, e);
                 if (exceptionFlag) {
