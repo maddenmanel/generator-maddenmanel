@@ -1,4 +1,4 @@
-package <%=packageName%>.<%=baseName%>.dao;
+package <%=packageName%>.<%=baseName%>.repository;
 
 import <%=packageName%>.<%=baseName%>.domain.User;
 import org.apache.ibatis.annotations.Mapper;

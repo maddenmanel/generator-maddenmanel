@@ -1,6 +1,6 @@
 package <%=packageName%>.<%=baseName%>.service.impl;
 
-import <%=packageName%>.<%=baseName%>.dao.UserMapper;
+import <%=packageName%>.<%=baseName%>.repository.UserMapper;
 import <%=packageName%>.<%=baseName%>.domain.User;
 import <%=packageName%>.<%=baseName%>.service.UserService;
 import lombok.extern.slf4j.Slf4j;

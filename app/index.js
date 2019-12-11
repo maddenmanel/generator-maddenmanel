@@ -102,7 +102,7 @@ SpringGenerator.prototype.app = function app() {
   var controllerDir = this.systemName + '/src/main/java/' + packageFolder + '/controller';
   var serviceDir = this.systemName + '/src/main/java/' + packageFolder + '/service';
   var serviceImplDir = this.systemName + '/src/main/java/' + packageFolder + '/service/impl';
-  var daoDir = this.systemName + '/src/main/java/' + packageFolder + '/dao';
+  var repositoryDir = this.systemName + '/src/main/java/' + packageFolder + '/repository';
   var domainDir = this.systemName + '/src/main/java/' + packageFolder + '/domain';
   var commonDir = this.systemName + '/src/main/java/' + packageFolder + '/common';
   var configrationDir = this.systemName + '/src/main/java/' + packageFolder + '/configration';
@@ -122,7 +122,7 @@ SpringGenerator.prototype.app = function app() {
   mkdirp(controllerDir);
   mkdirp(serviceDir);
   mkdirp(serviceImplDir);
-  mkdirp(daoDir);
+  mkdirp(repositoryDir);
   mkdirp(domainDir);
   mkdirp(commonDir);
   mkdirp(configrationDir);
@@ -191,8 +191,8 @@ SpringGenerator.prototype.app = function app() {
   this.template('User.java', domainDir + '/User.java');
   this.template('UserService.java', serviceDir + '/UserService.java');
   this.template('UserServiceImpl.java', serviceImplDir + '/UserServiceImpl.java');
-  this.template('UserMapper.java', daoDir + '/UserMapper.java');
-  this.template('UserMapper.java', daoDir + '/UserMapper.java');
+  this.template('UserMapper.java', repositoryDir + '/UserMapper.java');
+  this.template('UserMapper.java', repositoryDir + '/UserMapper.java');
 
   // interceptor
   this.template('LoginInterceptor.java', interceptorDir + '/LoginInterceptor.java');
