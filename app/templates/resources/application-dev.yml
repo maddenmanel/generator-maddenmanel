@@ -58,3 +58,14 @@ jdd:
             listeners:
               - topic: test
                 listenerBeanName: userAddListener #消费者的springbean的名称
+
+jsf:
+  provider:
+    alias: <%= systemName %>
+  consumer:
+    userServiceProvider:
+      alias: <%= systemName %>
+      timeout: 5000
+    orderIdGenerateFacade:
+      alias: cart_jsf_test
+      timeout: 5000

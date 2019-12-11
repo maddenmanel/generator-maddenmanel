@@ -1,4 +1,4 @@
-package <%=packageName%>.<%=baseName%>.common;
+package <%=packageName%>.<%=baseName%>.common.ump;
 
 /**
  * @author zhangxuegang@jd.com

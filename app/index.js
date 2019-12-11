@@ -111,6 +111,10 @@ SpringGenerator.prototype.app = function app() {
   var exceptionDir = this.systemName + '/src/main/java/' + packageFolder + '/exception';
   var producerDir = this.systemName + '/src/main/java/' + packageFolder + '/jmq/producer';
   var consumerDir = this.systemName + '/src/main/java/' + packageFolder + '/jmq/consumer';
+  var annotationDir = this.systemName + '/src/main/java/' + packageFolder + '/common/annotation';
+  var gatewayDir = this.systemName + '/src/main/java/' + packageFolder + '/gataway';
+  var rpcDir = this.systemName + '/src/main/java/' + packageFolder + '/rpc';
+
 
   // Mkdir.
   mkdirp(srcDir);
@@ -126,23 +130,59 @@ SpringGenerator.prototype.app = function app() {
   mkdirp(constantsDir);
   mkdirp(exceptionDir);
   mkdirp(producerDir);
-  mkdirp(consumerDir)
+  mkdirp(consumerDir);
+  mkdirp(annotationDir);
+  mkdirp(gatewayDir);
+  mkdirp(rpcDir);
 
   // Template.
   this.template('pom.xml', this.systemName + '/pom.xml');
   // this.template('.gitignore', this.systemName + '/.gitignore');
 
   this.template('Application.java', srcDir + '/Application.java');
-  this.template('BaseTest.java', testDir + '/BaseTest.java');
-  this.template('JmqProducerTest.java', testDir + '/jmq/producer/JmqProducerTest.java');
 
+  // common
   this.template('GsonUtil.java', commonDir + '/GsonUtil.java');
-  this.template('UMPCaller.java', commonDir + '/UMPCaller.java');
-  this.template('VoidCaller.java', commonDir + '/VoidCaller.java');
+  this.template('ValidateErrorsVO.java', commonDir + '/ValidateErrorsVO.java');
+  this.template('GateWayExceptionConvert.java', commonDir + '/GateWayExceptionConvert.java');
+  this.template('JsfClientContextFilter.java', commonDir + '/JsfClientContextFilter.java');
+  this.template('AnnotatedElementCacheUtils.java', commonDir + '/AnnotatedElementCacheUtils.java');
+  this.template('JacksonUtil.java', commonDir + '/JacksonUtil.java');
+  this.template('BindingResultUtils.java', commonDir + '/BindingResultUtils.java');
+  this.template('MessageFormatter.java', commonDir + '/MessageFormatter.java');
+  this.template('ITraceIdFactory.java', commonDir + '/ITraceIdFactory.java');
+  this.template('FieldErrorVO.java', commonDir + '/FieldErrorVO.java');
+  this.template('TraceIdFactory.java', commonDir + '/TraceIdFactory.java');
+  this.template('IGateWayFinally.java', commonDir + '/IGateWayFinally.java');
+  this.template('ClientContext.java', commonDir + '/ClientContext.java');
+  this.template('SystemIpUtil.java', commonDir + '/SystemIpUtil.java');
+  this.template('MDCFinally.java', commonDir + '/MDCFinally.java');
+  this.template('ClientInfo.java', commonDir + '/ClientInfo.java');
+  this.template('UUIDUtil.java', commonDir + '/UUIDUtil.java');
 
+  // ump
+  this.template('UMPCaller.java', commonDir + '/ump/UMPCaller.java');
+  this.template('VoidCaller.java', commonDir + '/ump/VoidCaller.java');
+
+  // constants
   this.template('CacheConfig.java', configrationDir + '/CacheConfig.java');
   this.template('UmpConstants.java', constantsDir + '/UmpConstants.java');
+  this.template('TraceConstants.java', constantsDir + '/TraceConstants.java');
+  this.template('ErrorCodeConstants.java', constantsDir + '/ErrorCodeConstants.java');
+
+  // exception
   this.template('JmqSendException.java', exceptionDir + '/JmqSendException.java');
+  this.template('BizException.java', exceptionDir + '/BizException.java');
+  this.template('BindException.java', exceptionDir + '/BindException.java');
+  this.template('BizExceptionConvert.java', exceptionDir + '/BizExceptionConvert.java');
+
+  // gateway
+  this.template('UserGateway.java', gatewayDir + '/UserGateway.java');
+
+  // rpc
+  this.template('OrderIdRPC.java', rpcDir + '/OrderIdRPC.java');
+
+  // jmq
   this.template('JmqProducer.java', producerDir + '/JmqProducer.java');
   this.template('UserAddListener.java', consumerDir + '/UserAddListener.java');
   this.template('BaseJmqMessageListener.java', consumerDir + '/BaseJmqMessageListener.java');
@@ -154,12 +194,25 @@ SpringGenerator.prototype.app = function app() {
   this.template('UserMapper.java', daoDir + '/UserMapper.java');
   this.template('UserMapper.java', daoDir + '/UserMapper.java');
 
-  this.template('UserServiceTest.java', testDir + '/service/UserServiceTest.java');
-
-  // common
+  // interceptor
   this.template('LoginInterceptor.java', interceptorDir + '/LoginInterceptor.java');
+  this.template('GateWayInterceptor.java', interceptorDir + '/GateWayInterceptor.java');
+  this.template('LoggableInterceptor.java', interceptorDir + '/LoggableInterceptor.java');
+
+  // controller
   this.template('IndexViewController.java', controllerDir + '/IndexViewController.java');
   this.template('LoginViewController.java', controllerDir + '/LoginViewController.java');
+
+  // common annotation
+  this.template('GateWay.java', annotationDir + '/GateWay.java');
+  this.template('Loggable.java', annotationDir + '/Loggable.java');
+
+  // test
+  this.template('UserServiceTest.java', testDir + '/service/UserServiceTest.java');
+  this.template('BaseTest.java', testDir + '/BaseTest.java');
+  this.template('JmqProducerTest.java', testDir + '/jmq/producer/JmqProducerTest.java');
+  this.template('UserGatewayTest.java', testDir + '/gateway/UserGatewayTest.java');
+  this.template('OrderIdRPC.java', testDir + '/rpc/OrderIdRPC.java');
 
   this.config.set('packageName', this.packageName);
   this.config.set('packageFolder', this.packageFolder);
@@ -174,7 +227,6 @@ SpringGenerator.prototype.writing = function writing() {
     {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
   );
 };
-
 
 SpringGenerator.prototype.projectfiles = function projectfiles() {
 };

@@ -3,12 +3,12 @@ package <%=packageName%>.<%=baseName%>.jmq.producer;
 import com.jd.jmq.client.producer.Producer;
 import com.jd.jmq.common.exception.JMQException;
 import com.jd.jmq.common.message.Message;
-import com.jdd.splitaccount.clearing.center.exception.JmqSendException;
+import <%=packageName%>.<%=baseName%>.exception.JmqSendException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import static com.jdd.splitaccount.clearing.center.common.UMPCaller.callWithTp;
+import static <%=packageName%>.<%=baseName%>.common.ump.UMPCaller.callWithTp;
 
 @Component
 @Slf4j

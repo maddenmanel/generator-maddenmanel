@@ -1,4 +1,4 @@
-package <%=packageName%>.<%=baseName%>.common;
+package <%=packageName%>.<%=baseName%>.common.ump;
 
 import com.jd.ump.profiler.CallerInfo;
 import com.jd.ump.profiler.proxy.Profiler;

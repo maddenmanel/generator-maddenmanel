@@ -1,7 +1,7 @@
 package <%=packageName%>.<%=baseName%>.exception;
 
 
-import com.jdd.common.util.MessageFormatter;
+import <%=packageName%>.<%=baseName%>.common.MessageFormatter;
 
 public class JmqSendException extends RuntimeException {
 
