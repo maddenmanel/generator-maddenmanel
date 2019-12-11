@@ -137,6 +137,9 @@ SpringGenerator.prototype.app = function app() {
 
   // Template.
   this.template('pom.xml', this.systemName + '/pom.xml');
+
+  // docs
+  this.template('business.md', this.systemName + '/docs/business.md');
   // this.template('.gitignore', this.systemName + '/.gitignore');
 
   this.template('Application.java', srcDir + '/Application.java');
@@ -164,8 +167,11 @@ SpringGenerator.prototype.app = function app() {
   this.template('UMPCaller.java', commonDir + '/ump/UMPCaller.java');
   this.template('VoidCaller.java', commonDir + '/ump/VoidCaller.java');
 
-  // constants
+  // configration
   this.template('CacheConfig.java', configrationDir + '/CacheConfig.java');
+  this.template('EasyUseConfig.java', configrationDir + '/EasyUseConfig.java');
+
+  // constants
   this.template('UmpConstants.java', constantsDir + '/UmpConstants.java');
   this.template('TraceConstants.java', constantsDir + '/TraceConstants.java');
   this.template('ErrorCodeConstants.java', constantsDir + '/ErrorCodeConstants.java');
