@@ -204,6 +204,7 @@ SpringGenerator.prototype.app = function app() {
   this.template('LoginInterceptor.java', interceptorDir + '/LoginInterceptor.java');
   this.template('GateWayInterceptor.java', interceptorDir + '/GateWayInterceptor.java');
   this.template('LoggableInterceptor.java', interceptorDir + '/LoggableInterceptor.java');
+  this.template('EasyValidInterceptor.java', interceptorDir + '/EasyValidInterceptor.java');
 
   // controller
   this.template('IndexViewController.java', controllerDir + '/IndexViewController.java');
@@ -212,13 +213,14 @@ SpringGenerator.prototype.app = function app() {
   // common annotation
   this.template('GateWay.java', annotationDir + '/GateWay.java');
   this.template('Loggable.java', annotationDir + '/Loggable.java');
+  this.template('EasyValid.java', annotationDir + '/EasyValid.java');
 
   // test
   this.template('UserServiceTest.java', testDir + '/service/UserServiceTest.java');
   this.template('BaseTest.java', testDir + '/BaseTest.java');
   this.template('JmqProducerTest.java', testDir + '/jmq/producer/JmqProducerTest.java');
   this.template('UserGatewayTest.java', testDir + '/gateway/UserGatewayTest.java');
-  this.template('OrderIdRPC.java', testDir + '/rpc/OrderIdRPC.java');
+  this.template('OrderIdRPCTest.java', testDir + '/rpc/OrderIdRPCTest.java');
 
   this.config.set('packageName', this.packageName);
   this.config.set('packageFolder', this.packageFolder);
