@@ -1,6 +1,6 @@
 {
-  "name": "generator-unionstars",
-  "version": "1.0.64",
+  "name": "generator-jdd",
+  "version": "1.0.69",
   "description": "A Yeoman Generator for Spring Boot and Spring Cloud",
   "keywords": [
     "yeoman-generator"

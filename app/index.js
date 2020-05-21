@@ -53,12 +53,12 @@ SpringGenerator.prototype.askFor = function askFor() {
       type: 'string',
       name: 'systemName',
       message: '请输入系统名称:',
-      default: 'jdd-example-center'
+      default: 'jdpay-example-center'
     },{
       type: 'string',
       name: 'moduleNameFront',
       message: '请输入Module前缀:',
-      default: 'jdd-example'
+      default: 'jdpay-example'
     },  {
       type: 'string',
       name: 'javaVersion',
