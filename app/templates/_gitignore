@@ -1,0 +1,9 @@
+*.ipr
+*.ids
+*.iws
+*.iml
+.idea/
+target/
+config_center_client.log
+jenvrc
+.DS_Store

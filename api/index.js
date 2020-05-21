@@ -64,7 +64,7 @@ SpringGenerator.prototype.app = function app() {
   var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.baseName.replace(/\./g,'/');
 
   var srcDir = this.systemName + '/src/main/java/' + packageFolder;
-  var moDir = this.systemName + '/src/main/java/' + packageFolder + '/mo';
+  var moDir = this.systemName + '/src/main/java/' + packageFolder + '/dto';
   var facadeDir = this.systemName + '/src/main/java/' + packageFolder + '/facade';
 
   // Mkdir.
@@ -73,10 +73,11 @@ SpringGenerator.prototype.app = function app() {
   mkdirp(facadeDir);
 
   // Template.
+  this.copy('_gitignore', this.systemName + '/.gitignore');
   this.template('pom.xml', this.systemName + '/pom.xml');
   this.template('Request.java', srcDir + '/Request.java');
   this.template('Response.java', srcDir + '/Response.java');
-  this.template('UserMO.java', moDir + '/UserMO.java');
+  this.template('UserDTO.java', moDir + '/UserDTO.java');
   this.template('UserServiceProvider.java', facadeDir + '/UserServiceProvider.java');
 
   this.config.set('packageName', this.packageName);

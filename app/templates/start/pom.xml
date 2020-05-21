@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId><%=packageName%></groupId>
+        <artifactId><%= systemName %></artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId><%=moduleNameFront%>-start</artifactId>
+    <name>Start</name>
+    <description>启动层</description>
+    <% if (jar) { %><packaging>jar</packaging><% } %><% if (war) { %><packaging>war</packaging><% } %>
+
+    <dependencies>
+        <dependency>
+            <groupId><%=packageName%></groupId>
+            <artifactId><%=moduleNameFront%>-interfaces</artifactId>
+        </dependency>
+        <dependency>
+            <groupId><%=packageName%></groupId>
+            <artifactId><%=moduleNameFront%>-infrastructure</artifactId>
+        </dependency>
+    </dependencies>
+</project>

@@ -112,6 +112,7 @@ SpringGenerator.prototype.app = function app() {
   mkdirp(modelDir);
 
   // Template.
+  this.copy('_gitignore', this.systemName + '/.gitignore');
   this.template('pom.xml', this.systemName + '/pom.xml');
   this.template('RestApplication.java', srcDir + '/RestApplication.java');
   this.template('BaseResult.java', configDir + '/BaseResult.java');

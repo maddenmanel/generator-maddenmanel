@@ -43,7 +43,7 @@ SpringGenerator.prototype.askFor = function askFor() {
       type: 'string',
       name: 'bootVersion',
       message: '请输入Spring Boot的版本:',
-      default: '2.1.8.RELEASE'
+      default: '2.2.6.RELEASE'
     }, {
       type: 'string',
       name: 'packageName',
@@ -53,8 +53,13 @@ SpringGenerator.prototype.askFor = function askFor() {
       type: 'string',
       name: 'systemName',
       message: '请输入系统名称:',
-      default: 'app'
-    }, {
+      default: 'jdd-example-center'
+    },{
+      type: 'string',
+      name: 'moduleNameFront',
+      message: '请输入Module前缀:',
+      default: 'jdd-example'
+    },  {
       type: 'string',
       name: 'javaVersion',
       message: '请输入Java的版本:',
@@ -72,6 +77,33 @@ SpringGenerator.prototype.askFor = function askFor() {
           value: 'war'
         }
       ]
+    }, {
+      type: 'checkbox',
+      name: 'dependencies',
+      message: '请选择依赖:',
+      choices: [
+        {
+          name: 'jsf',
+          value: 'jsf',
+          checked: true
+        }, {
+          name: 'jmq',
+          value: 'jmq',
+          checked: true
+        }, {
+          name: 'ump',
+          value: 'ump',
+          checked: true
+        }, {
+          name: 'json',
+          value: 'json',
+          checked: true
+        }, {
+          name: 'log',
+          value: 'log',
+          checked: true
+        }
+      ]
     },
   ];
 
@@ -79,9 +111,10 @@ SpringGenerator.prototype.askFor = function askFor() {
     this.bootVersion = props.bootVersion;
     this.packageName = props.packageName;
     this.systemName = props.systemName;
+    this.moduleNameFront = props.moduleNameFront;
     this.javaVersion = props.javaVersion;
     this.packagingType = props.packagingType;
-    this.baseName = this.systemName.replace(/\-/g,'.').replace(/\_/g,'.');
+    this.baseName = this.moduleNameFront.replace(/\-/g, '.').replace(/\_/g, '.');
 
     // Packaging Type
     var hasPackagingType = function (packagingTypeStarter) {
@@ -89,152 +122,84 @@ SpringGenerator.prototype.askFor = function askFor() {
     };
     this.jar = hasPackagingType('jar');
     this.war = hasPackagingType('war');
-
     cb();
   }.bind(this));
 };
 
 SpringGenerator.prototype.app = function app() {
-  var packageFolder = this.packageName.replace(/\./g, '/')+'/' + this.systemName.replace(/\-/g,'/').replace(/\_/g,'/');
-  var srcDir = this.systemName + '/src/main/java/' + packageFolder;
-  var testDir = this.systemName + '/src/test/java/' +packageFolder;
-
-  var controllerDir = this.systemName + '/src/main/java/' + packageFolder + '/controller';
-  var serviceDir = this.systemName + '/src/main/java/' + packageFolder + '/service';
-  var serviceImplDir = this.systemName + '/src/main/java/' + packageFolder + '/service/impl';
-  var repositoryDir = this.systemName + '/src/main/java/' + packageFolder + '/repository';
-  var domainDir = this.systemName + '/src/main/java/' + packageFolder + '/domain';
-  var commonDir = this.systemName + '/src/main/java/' + packageFolder + '/common';
-  var configrationDir = this.systemName + '/src/main/java/' + packageFolder + '/configration';
-  var interceptorDir = this.systemName + '/src/main/java/' + packageFolder + '/interceptor';
-  var constantsDir = this.systemName + '/src/main/java/' + packageFolder + '/constants';
-  var exceptionDir = this.systemName + '/src/main/java/' + packageFolder + '/exception';
-  var producerDir = this.systemName + '/src/main/java/' + packageFolder + '/jmq/producer';
-  var consumerDir = this.systemName + '/src/main/java/' + packageFolder + '/jmq/consumer';
-  var annotationDir = this.systemName + '/src/main/java/' + packageFolder + '/common/annotation';
-  var gatewayDir = this.systemName + '/src/main/java/' + packageFolder + '/gataway';
-  var rpcDir = this.systemName + '/src/main/java/' + packageFolder + '/rpc';
 
 
-  // Mkdir.
-  mkdirp(srcDir);
-  mkdirp(testDir);
-  mkdirp(controllerDir);
-  mkdirp(serviceDir);
-  mkdirp(serviceImplDir);
-  mkdirp(repositoryDir);
-  mkdirp(domainDir);
-  mkdirp(commonDir);
-  mkdirp(configrationDir);
-  mkdirp(interceptorDir);
-  mkdirp(constantsDir);
-  mkdirp(exceptionDir);
-  mkdirp(producerDir);
-  mkdirp(consumerDir);
-  mkdirp(annotationDir);
-  mkdirp(gatewayDir);
-  mkdirp(rpcDir);
-
-  // Template.
-  this.template('pom.xml', this.systemName + '/pom.xml');
+  var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.moduleNameFront.replace(/\-/g, '/').replace(/\_/g, '/');
+  mkdirp(this.systemName);
 
   // docs
-  this.template('business.md', this.systemName + '/docs/business.md');
-  // this.template('.gitignore', this.systemName + '/.gitignore');
+  this.template('docs/business.md', this.systemName + '/docs/business.md');
+  this.copy('_gitignore', this.systemName + '/.gitignore');
 
-  this.template('Application.java', srcDir + '/Application.java');
 
-  // common
-  this.template('GsonUtil.java', commonDir + '/GsonUtil.java');
-  this.template('ValidateErrorsVO.java', commonDir + '/ValidateErrorsVO.java');
-  this.template('GateWayExceptionConvert.java', commonDir + '/GateWayExceptionConvert.java');
-  this.template('JsfClientContextFilter.java', commonDir + '/JsfClientContextFilter.java');
-  this.template('AnnotatedElementCacheUtils.java', commonDir + '/AnnotatedElementCacheUtils.java');
-  this.template('JacksonUtil.java', commonDir + '/JacksonUtil.java');
-  this.template('BindingResultUtils.java', commonDir + '/BindingResultUtils.java');
-  this.template('MessageFormatter.java', commonDir + '/MessageFormatter.java');
-  this.template('ITraceIdFactory.java', commonDir + '/ITraceIdFactory.java');
-  this.template('FieldErrorVO.java', commonDir + '/FieldErrorVO.java');
-  this.template('TraceIdFactory.java', commonDir + '/TraceIdFactory.java');
-  this.template('IGateWayFinally.java', commonDir + '/IGateWayFinally.java');
-  this.template('ClientContext.java', commonDir + '/ClientContext.java');
-  this.template('SystemIpUtil.java', commonDir + '/SystemIpUtil.java');
-  this.template('MDCFinally.java', commonDir + '/MDCFinally.java');
-  this.template('ClientInfo.java', commonDir + '/ClientInfo.java');
-  this.template('UUIDUtil.java', commonDir + '/UUIDUtil.java');
+  // root
+  this.template('pom.xml', this.systemName + '/pom.xml');
+  this.template('README.md', this.systemName + '/README.md');
 
-  // ump
-  this.template('UMPCaller.java', commonDir + '/ump/UMPCaller.java');
-  this.template('VoidCaller.java', commonDir + '/ump/VoidCaller.java');
 
-  // configration
-  this.template('CacheConfig.java', configrationDir + '/CacheConfig.java');
-  this.template('EasyUseConfig.java', configrationDir + '/EasyUseConfig.java');
+  // domainModule
+  var domainModule = this.moduleNameFront + '-domain';
+  mkdirp(this.systemName + '/' + domainModule);
+  this.template('domain/package-info.java', this.systemName + '/' + domainModule + '/src/main/java/' + packageFolder + '/domain' + '/package-info.java');
+  this.template('domain/pom.xml', this.systemName + '/' + domainModule + '/pom.xml');
 
-  // constants
-  this.template('UmpConstants.java', constantsDir + '/UmpConstants.java');
-  this.template('TraceConstants.java', constantsDir + '/TraceConstants.java');
-  this.template('ErrorCodeConstants.java', constantsDir + '/ErrorCodeConstants.java');
 
-  // exception
-  this.template('JmqSendException.java', exceptionDir + '/JmqSendException.java');
-  this.template('BizException.java', exceptionDir + '/BizException.java');
-  this.template('BindException.java', exceptionDir + '/BindException.java');
-  this.template('BizExceptionConvert.java', exceptionDir + '/BizExceptionConvert.java');
+  // infrastructureModule
+  var infrastructureModule = this.moduleNameFront + '-infrastructure';
+  mkdirp(this.systemName + '/' + infrastructureModule);
+  this.template('infrastructure/package-info.java', this.systemName + '/' + infrastructureModule + '/src/main/java/' + packageFolder + '/infrastructure' + '/package-info.java');
+  this.template('infrastructure/pom.xml', this.systemName + '/' + infrastructureModule + '/pom.xml');
 
-  // gateway
-  this.template('UserGateway.java', gatewayDir + '/UserGateway.java');
+  this.fs.copyTpl(
+    this.templatePath('infrastructure/template'),
+    this.destinationPath(this.systemName + '/' + infrastructureModule + '/src/main/java/' + packageFolder + '/infrastructure'),
+    {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
+  );
 
-  // rpc
-  this.template('OrderIdRPC.java', rpcDir + '/OrderIdRPC.java');
 
-  // jmq
-  this.template('JmqProducer.java', producerDir + '/JmqProducer.java');
-  this.template('UserAddListener.java', consumerDir + '/UserAddListener.java');
-  this.template('BaseJmqMessageListener.java', consumerDir + '/BaseJmqMessageListener.java');
+  // interfacesModule
+  var interfacesModule = this.moduleNameFront + '-interfaces';
+  mkdirp(this.systemName + '/' + interfacesModule);
+  this.template('interfaces/package-info.java', this.systemName + '/' + interfacesModule + '/src/main/java/' + packageFolder + '/interfaces' + '/package-info.java');
+  this.template('interfaces/pom.xml', this.systemName + '/' + interfacesModule + '/pom.xml');
 
-  // example
-  this.template('User.java', domainDir + '/User.java');
-  this.template('UserService.java', serviceDir + '/UserService.java');
-  this.template('UserServiceImpl.java', serviceImplDir + '/UserServiceImpl.java');
-  this.template('UserMapper.java', repositoryDir + '/UserMapper.java');
-  this.template('UserMapper.java', repositoryDir + '/UserMapper.java');
+  this.fs.copyTpl(
+    this.templatePath('interfaces/template'),
+    this.destinationPath(this.systemName + '/' + interfacesModule + '/src/main/java/' + packageFolder + '/interfaces'),
+    {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
+  );
 
-  // interceptor
-  this.template('LoginInterceptor.java', interceptorDir + '/LoginInterceptor.java');
-  this.template('GateWayInterceptor.java', interceptorDir + '/GateWayInterceptor.java');
-  this.template('LoggableInterceptor.java', interceptorDir + '/LoggableInterceptor.java');
-  this.template('EasyValidInterceptor.java', interceptorDir + '/EasyValidInterceptor.java');
 
-  // controller
-  this.template('IndexViewController.java', controllerDir + '/IndexViewController.java');
-  this.template('LoginViewController.java', controllerDir + '/LoginViewController.java');
+  // serviceModule
+  var serviceModule = this.moduleNameFront + '-service';
+  mkdirp(this.systemName + '/' + serviceModule);
+  this.template('service/package-info.java', this.systemName + '/' + serviceModule + '/src/main/java/' + packageFolder + '/service' + '/package-info.java');
+  this.template('service/pom.xml', this.systemName + '/' + serviceModule + '/pom.xml');
 
-  // common annotation
-  this.template('GateWay.java', annotationDir + '/GateWay.java');
-  this.template('Loggable.java', annotationDir + '/Loggable.java');
-  this.template('EasyValid.java', annotationDir + '/EasyValid.java');
+  this.fs.copyTpl(
+    this.templatePath('service/template'),
+    this.destinationPath(this.systemName + '/' + serviceModule + '/src/main/java/' + packageFolder + '/service'),
+    {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
+  );
 
-  // test
-  this.template('UserServiceTest.java', testDir + '/service/UserServiceTest.java');
-  this.template('BaseTest.java', testDir + '/BaseTest.java');
-  this.template('JmqProducerTest.java', testDir + '/jmq/producer/JmqProducerTest.java');
-  this.template('UserGatewayTest.java', testDir + '/gateway/UserGatewayTest.java');
-  this.template('OrderIdRPCTest.java', testDir + '/rpc/OrderIdRPCTest.java');
+  // startModule
+  var startModule = this.moduleNameFront + '-start';
+  mkdirp(this.systemName + '/' + startModule);
+  this.template('start/package-info.java', this.systemName + '/' + startModule + '/src/main/java/' + packageFolder + '/start' + '/package-info.java');
+  this.template('start/Application.java',  this.systemName + '/' + startModule + '/src/main/java/' + packageFolder + '/start' + '/Application.java');
+  this.template('start/pom.xml', this.systemName + '/' + startModule + '/pom.xml');
+  this.fs.copyTpl(
+    this.templatePath('start/template/resources'),
+    this.destinationPath(this.systemName + '/' + startModule + '/src/main/resources/'),
+    {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
+  );
 
   this.config.set('packageName', this.packageName);
   this.config.set('packageFolder', this.packageFolder);
 };
 
-
-// Resource template copy.
-SpringGenerator.prototype.writing = function writing() {
-  this.fs.copyTpl(
-    this.templatePath('resources'),
-    this.destinationPath(this.systemName + '/src/main/resources/'),
-    {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
-  );
-};
-
-SpringGenerator.prototype.projectfiles = function projectfiles() {
-};
