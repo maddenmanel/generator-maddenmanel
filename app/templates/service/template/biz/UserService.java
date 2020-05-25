@@ -1,4 +1,4 @@
-package <%=packageName%>.<%=baseName%>.service;
+package <%=packageName%>.<%=baseName%>.service.biz;
 
 import com.jdd.jdpay.common.log.annotation.Loggable;
 import com.jdd.jdpay.common.ump.annotation.UmpProfiler;

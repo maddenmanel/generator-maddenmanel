@@ -1,4 +1,4 @@
 /**
- * 整洁架构分层
+ * 接口层
  */
 package <%=packageName%>.<%=baseName%>.interfaces;

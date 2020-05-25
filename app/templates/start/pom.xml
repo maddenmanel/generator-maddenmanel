@@ -24,5 +24,10 @@
             <groupId><%=packageName%></groupId>
             <artifactId><%=moduleNameFront%>-infrastructure</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.jdd.jdpay</groupId>
+            <artifactId>common-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>

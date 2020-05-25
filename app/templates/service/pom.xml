@@ -24,9 +24,9 @@
             <artifactId><%=moduleNameFront%>-domain</artifactId>
         </dependency>
         <dependency>
-            <groupId><%=packageName%></groupId>
-            <artifactId><%=moduleNameFront%>-infrastructure</artifactId>
-        </dependency>
+            <groupId>com.jdd.jdpay</groupId>
+            <artifactId>common-mybatis</artifactId>
+          </dependency>
     </dependencies>
 
 </project>

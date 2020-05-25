@@ -23,6 +23,10 @@
             <groupId><%=packageName%></groupId>
             <artifactId><%=moduleNameFront%>-domain</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.jdd.jdpay</groupId>
+            <artifactId>common-druid</artifactId>
+          </dependency>
     </dependencies>
 
 </project>

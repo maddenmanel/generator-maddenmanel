@@ -54,12 +54,12 @@ SpringGenerator.prototype.askFor = function askFor() {
       name: 'systemName',
       message: '请输入系统名称:',
       default: 'jdpay-example-center'
-    },{
+    }, {
       type: 'string',
       name: 'moduleNameFront',
       message: '请输入Module前缀:',
       default: 'jdpay-example'
-    },  {
+    }, {
       type: 'string',
       name: 'javaVersion',
       message: '请输入Java的版本:',
@@ -83,26 +83,65 @@ SpringGenerator.prototype.askFor = function askFor() {
       message: '请选择依赖:',
       choices: [
         {
-          name: 'jsf',
-          value: 'jsf',
+          name: 'web',
+          value: 'web',
           checked: true
-        }, {
-          name: 'jmq',
-          value: 'jmq',
+        },
+        {
+          name: 'tomcat',
+          value: 'tomcat',
           checked: true
-        }, {
-          name: 'ump',
-          value: 'ump',
+        },
+        {
+          name: 'lombok',
+          value: 'lombok',
           checked: true
-        }, {
-          name: 'json',
-          value: 'json',
+        },
+        {
+          name: 'test',
+          value: 'test',
           checked: true
-        }, {
+        },
+        {
+          name: 'core',
+          value: 'core',
+          checked: true
+        },
+        {
           name: 'log',
           value: 'log',
           checked: true
-        }
+        },
+        {
+          name: 'jsf',
+          value: 'jsf',
+          checked: true
+        },
+        {
+          name: 'ump',
+          value: 'ump',
+          checked: true
+        },
+        {
+          name: 'json',
+          value: 'json',
+          checked: true
+        },
+        {
+          name: 'jmq',
+          value: 'jmq',
+          checked: true
+        },
+        {
+          name: 'druid',
+          value: 'druid',
+          checked: true
+        },
+        {
+          name: 'mybatis',
+          value: 'mybatis',
+          checked: true
+        },
       ]
     },
   ];
@@ -147,6 +186,7 @@ SpringGenerator.prototype.app = function app() {
   mkdirp(this.systemName + '/' + domainModule);
   this.template('domain/package-info.java', this.systemName + '/' + domainModule + '/src/main/java/' + packageFolder + '/domain' + '/package-info.java');
   this.template('domain/pom.xml', this.systemName + '/' + domainModule + '/pom.xml');
+  this.template('domain/User.java', this.systemName + '/' + domainModule + '/src/main/java/' + packageFolder + '/domain' + '/User.java');
 
 
   // infrastructureModule
@@ -158,6 +198,12 @@ SpringGenerator.prototype.app = function app() {
   this.fs.copyTpl(
     this.templatePath('infrastructure/template'),
     this.destinationPath(this.systemName + '/' + infrastructureModule + '/src/main/java/' + packageFolder + '/infrastructure'),
+    {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
+  );
+
+  this.fs.copyTpl(
+    this.templatePath('infrastructure/resources'),
+    this.destinationPath(this.systemName + '/' + infrastructureModule + '/src/main/resources/'),
     {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
   );
 
@@ -191,7 +237,7 @@ SpringGenerator.prototype.app = function app() {
   var startModule = this.moduleNameFront + '-start';
   mkdirp(this.systemName + '/' + startModule);
   this.template('start/package-info.java', this.systemName + '/' + startModule + '/src/main/java/' + packageFolder + '/start' + '/package-info.java');
-  this.template('start/Application.java',  this.systemName + '/' + startModule + '/src/main/java/' + packageFolder + '/start' + '/Application.java');
+  this.template('start/Application.java', this.systemName + '/' + startModule + '/src/main/java/' + packageFolder + '/start' + '/Application.java');
   this.template('start/pom.xml', this.systemName + '/' + startModule + '/pom.xml');
   this.fs.copyTpl(
     this.templatePath('start/template/resources'),
