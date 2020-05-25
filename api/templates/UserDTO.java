@@ -1,4 +1,4 @@
-package <%=packageName%>.<%=baseName%>.mo;
+package <%=packageName%>.<%=baseName%>.dto;
 
 import lombok.Data;
 

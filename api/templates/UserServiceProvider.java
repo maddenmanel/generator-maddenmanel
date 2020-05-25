@@ -1,12 +1,12 @@
 package <%=packageName%>.<%=baseName%>.facade;
 
 import <%=packageName%>.<%=baseName%>.Response;
-import <%=packageName%>.<%=baseName%>.mo.UserMO;
+import <%=packageName%>.<%=baseName%>.dto.UserDTO;
 
 /**
  * @author zhangxuegang@gmail.com
  */
 public interface UserServiceProvider {
 
-  Response<UserMO> getOne(Integer id);
+  Response<UserDTO> getOne(Integer id);
 }
