@@ -239,11 +239,19 @@ SpringGenerator.prototype.app = function app() {
   this.template('start/package-info.java', this.systemName + '/' + startModule + '/src/main/java/' + packageFolder + '/start' + '/package-info.java');
   this.template('start/Application.java', this.systemName + '/' + startModule + '/src/main/java/' + packageFolder + '/start' + '/Application.java');
   this.template('start/pom.xml', this.systemName + '/' + startModule + '/pom.xml');
+
+  // test
+  this.template('start/template/test/UserServiceTest.java', this.systemName + '/' + startModule + '/src/test/java/' + packageFolder + '/service/biz' + '/UserServiceTest.java');
+
   this.fs.copyTpl(
     this.templatePath('start/template/resources'),
     this.destinationPath(this.systemName + '/' + startModule + '/src/main/resources/'),
     {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
   );
+
+
+
+
 
   this.config.set('packageName', this.packageName);
   this.config.set('packageFolder', this.packageFolder);

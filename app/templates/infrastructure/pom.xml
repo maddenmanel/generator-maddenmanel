@@ -26,7 +26,12 @@
         <dependency>
             <groupId>com.jdd.jdpay</groupId>
             <artifactId>common-druid</artifactId>
-          </dependency>
+        </dependency>
+        <dependency>
+            <groupId>com.jdd.jdpay</groupId>
+            <artifactId>common-r2m</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

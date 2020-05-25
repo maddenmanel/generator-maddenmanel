@@ -13,6 +13,8 @@ public class HelloController {
 
     @GetMapping("/hi")
     public String user(Integer id) {
-        return userService.getUser(id);
+        String userNameWithDB = userService.getUserWithDB(id);
+        String userNameWithJSF = userService.getUserWithJSF(id);
+        return userNameWithDB + ";" + userNameWithJSF;
     }
 }
