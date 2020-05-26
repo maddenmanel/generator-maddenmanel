@@ -177,4 +177,22 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+          <id>product</id>
+          <properties>
+            <profileActive>product</profileActive>
+          </properties>
+        </profile>
+        <profile>
+          <id>dev</id>
+          <activation>
+            <activeByDefault>true</activeByDefault>
+          </activation>
+          <properties>
+            <profileActive>dev</profileActive>
+          </properties>
+        </profile>
+    </profiles>
+
 </project>

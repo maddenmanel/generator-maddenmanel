@@ -1,6 +1,6 @@
 {
   "name": "generator-jdd",
-  "version": "1.0.86",
+  "version": "1.0.88",
   "description": "A Yeoman Generator for Spring Boot and Spring Cloud",
   "keywords": [
     "yeoman-generator"

@@ -196,7 +196,11 @@ SpringGenerator.prototype.app = function app() {
   this.template('dao/package-info.java', this.systemName + '/' + repositoryModule + '/src/main/java/' + packageFolder + '/dao' + '/package-info.java');
   this.template('dao/pom.xml', this.systemName + '/' + repositoryModule + '/pom.xml');
   this.template('dao/UserMapper.java', this.systemName + '/' + repositoryModule + '/src/main/java/' + packageFolder + '/dao' + '/UserMapper.java');
-
+  this.fs.copyTpl(
+    this.templatePath('dao/resources'),
+    this.destinationPath(this.systemName + '/' + repositoryModule + '/src/main/resources/'),
+    {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
+  );
 
 
   // serviceModule
