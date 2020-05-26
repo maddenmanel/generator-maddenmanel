@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId><%=packageName%></groupId>
+    <artifactId><%= systemName %></artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name><%= systemName %></name>
+    <description>A project used generator-unionstars project</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version><%= bootVersion %></version>
+        <relativePath/>
+    </parent>
+
+    <modules>
+        <module><%=moduleNameFront%>-domain</module>
+        <module><%=moduleNameFront%>-dao</module>
+        <module><%=moduleNameFront%>-service</module>
+        <module><%=moduleNameFront%>-web</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-web</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-tomcat</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-lombok</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-test</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-core</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-log</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-jsf</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-ump</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-json</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-jmq</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-druid</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-mybatis</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-r2m</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd</groupId>
+                <artifactId>jdpay-demo-api</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd</groupId>
+                <artifactId><%=moduleNameFront%>-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd</groupId>
+                <artifactId><%=moduleNameFront%>-dao</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd</groupId>
+                <artifactId><%=moduleNameFront%>-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd</groupId>
+                <artifactId><%=moduleNameFront%>-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.jdd.jdpay</groupId>
+            <artifactId>common-json</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.jdd.jdpay</groupId>
+            <artifactId>common-log</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.jdd.jdpay</groupId>
+            <artifactId>common-lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jdd.jdpay</groupId>
+            <artifactId>common-ump</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.jdd.jdpay</groupId>
+            <artifactId>common-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.jdd.jdpay</groupId>
+            <artifactId>common-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>http://nexus.cbpmgt.com/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://nexus.cbpmgt.com/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass><%=packageName%>.<%=baseName%>.start.Application</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="<%=packageName%>.<%=baseName%>.dao.UserMapper">
+
+  <resultMap id="BaseResultMap" type="<%=packageName%>.<%=baseName%>.domain.User" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="BIGINT" />
+    <result column="addr" property="addr" jdbcType="VARCHAR"/>
+    <result column="created_date" property="createdDate" jdbcType="DATE"/>
+    <result column="modified_date" property="modifiedDate" jdbcType="DATE"/>
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, name, age, addr, created_date, modified_date
+  </sql>
+
+  <insert id="insert" parameterType="<%=packageName%>.<%=baseName%>.domain.User">
+    INSERT INTO t_user (name, age, addr, created_date, modified_date)
+    VALUES (#{name}, #{age}, #{addr}, now(), now())
+  </insert>
+
+  <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM t_user
+    WHERE id = #{id}
+  </select>
+
+</mapper>

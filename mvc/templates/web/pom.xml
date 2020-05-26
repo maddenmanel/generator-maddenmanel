@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId><%=packageName%></groupId>
+        <artifactId><%= systemName %></artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId><%=moduleNameFront%>-web</artifactId>
+    <name>Web</name>
+    <description>web层</description>
+  <% if (jar) { %><packaging>jar</packaging><% } %><% if (war) { %><packaging>war</packaging><% } %>
+
+  <dependencies>
+        <dependency>
+            <groupId>com.jdd.jdpay</groupId>
+            <artifactId>common-jsf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId><%=packageName%></groupId>
+            <artifactId><%=moduleNameFront%>-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.jdd</groupId>
+            <artifactId>jdpay-demo-api</artifactId>
+        </dependency>
+            <dependency>
+            <groupId>com.jdd.jdpay</groupId>
+            <artifactId>common-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+</project>
