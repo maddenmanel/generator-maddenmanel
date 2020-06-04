@@ -18,6 +18,7 @@
     </parent>
 
     <modules>
+        <module><%=moduleNameFront%>-common</module>
         <module><%=moduleNameFront%>-domain</module>
         <module><%=moduleNameFront%>-dao</module>
         <module><%=moduleNameFront%>-service</module>
@@ -97,9 +98,19 @@
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
+              <groupId>com.jdd.jdpay</groupId>
+              <artifactId>common-easyUse</artifactId>
+              <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
                 <groupId>com.jdd</groupId>
                 <artifactId>jdpay-demo-api</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd</groupId>
+                <artifactId><%=moduleNameFront%>-common</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.jdd</groupId>
@@ -126,6 +137,16 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                  <groupId>org.springframework.boot</groupId>
+                  <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
             <groupId>com.jdd.jdpay</groupId>
             <artifactId>common-json</artifactId>
         </dependency>
@@ -141,6 +162,10 @@
         <dependency>
             <groupId>com.jdd.jdpay</groupId>
             <artifactId>common-ump</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.jdd.jdpay</groupId>
+            <artifactId>common-easyUse</artifactId>
         </dependency>
         <dependency>
             <groupId>com.jdd.jdpay</groupId>

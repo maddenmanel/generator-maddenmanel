@@ -28,10 +28,14 @@
             <groupId>com.jdd</groupId>
             <artifactId>jdpay-demo-api</artifactId>
         </dependency>
-            <dependency>
+        <dependency>
             <groupId>com.jdd.jdpay</groupId>
             <artifactId>common-tomcat</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jdd.jdpay</groupId>
+            <artifactId>common-javamelody</artifactId>
         </dependency>
     </dependencies>
 

@@ -190,6 +190,13 @@ SpringGenerator.prototype.app = function app() {
   this.template('domain/User.java', this.systemName + '/' + domainModule + '/src/main/java/' + packageFolder + '/domain' + '/User.java');
 
 
+  // commonModule
+  var commonModule = this.moduleNameFront + '-common';
+  mkdirp(this.systemName + '/' + commonModule);
+  this.template('common/package-info.java', this.systemName + '/' + commonModule + '/src/main/java/' + packageFolder + '/common' + '/package-info.java');
+  this.template('common/pom.xml', this.systemName + '/' + commonModule + '/pom.xml');
+  this.template('common/Constants.java', this.systemName + '/' + commonModule + '/src/main/java/' + packageFolder + '/common' + '/Constants.java');
+
   // daoModule
   var repositoryModule = this.moduleNameFront + '-dao';
   mkdirp(this.systemName + '/' + repositoryModule);
@@ -201,7 +208,6 @@ SpringGenerator.prototype.app = function app() {
     this.destinationPath(this.systemName + '/' + repositoryModule + '/src/main/resources/'),
     {systemName: this.systemName, packageName: this.packageName, baseName: this.baseName}
   );
-
 
   // serviceModule
   var serviceModule = this.moduleNameFront + '-service';

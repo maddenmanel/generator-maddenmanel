@@ -1,4 +1,4 @@
-package <%=packageName%>.<%=baseName%>.web.gateway.rest;
+package <%=packageName%>.<%=baseName%>.web.rest;
 
 import <%=packageName%>.<%=baseName%>.service.biz.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

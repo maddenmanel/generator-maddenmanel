@@ -1,7 +1,6 @@
 package <%=packageName%>.<%=baseName%>.service.biz;
 
-import com.jdd.jdpay.common.log.annotation.Loggable;
-import com.jdd.jdpay.common.ump.annotation.UmpProfiler;
+import com.jdd.jdpay.common.easyuse.annotation.EasyServiceMethod;
 import com.jdd.jdpay.demo.api.Response;
 import com.jdd.jdpay.demo.api.facade.UserServiceProvider;
 import com.jdd.jdpay.demo.api.mo.UserMO;
@@ -19,15 +18,13 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
-    @Loggable
-    @UmpProfiler
+    @EasyServiceMethod
     public String getUserWithJSF(Integer id) {
         Response<UserMO> userMOResponse = userServiceProvider.getOne(id);
         return "hello," + userMOResponse.getData().getName();
     }
 
-    @Loggable
-    @UmpProfiler
+    @EasyServiceMethod
     public String getUserWithDB(Integer id) {
         User user = userMapper.getOne(Long.valueOf(id));
         return "hello," + user.getName();
