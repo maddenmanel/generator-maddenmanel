@@ -98,9 +98,14 @@
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-              <groupId>com.jdd.jdpay</groupId>
-              <artifactId>common-easyUse</artifactId>
-              <version>1.0-SNAPSHOT</version>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-easyUse</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jdd.jdpay</groupId>
+                <artifactId>common-javamelody</artifactId>
+                <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.jdd</groupId>
@@ -108,27 +113,27 @@
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>com.jdd</groupId>
+                <groupId><%=packageName%></groupId>
                 <artifactId><%=moduleNameFront%>-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.jdd</groupId>
+                <groupId><%=packageName%></groupId>
                 <artifactId><%=moduleNameFront%>-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.jdd</groupId>
+                <groupId><%=packageName%></groupId>
                 <artifactId><%=moduleNameFront%>-dao</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.jdd</groupId>
+                <groupId><%=packageName%></groupId>
                 <artifactId><%=moduleNameFront%>-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.jdd</groupId>
+                <groupId><%=packageName%></groupId>
                 <artifactId><%=moduleNameFront%>-web</artifactId>
                 <version>${project.version}</version>
             </dependency>

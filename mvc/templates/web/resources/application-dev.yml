@@ -45,7 +45,7 @@ rpc:
     id: consumer-userServiceProvider
     interfaceClazz: com.jdd.jdpay.demo.api.facade.UserServiceProvider
     alias: jsf2.0
-    filter: contextConsumerFilter
+    filter: contextConsumerUseToJsonPrintFilter
 
 spring:
   datasource:

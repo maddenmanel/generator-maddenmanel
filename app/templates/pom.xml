@@ -103,22 +103,22 @@
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>com.jdd</groupId>
+                <groupId><%=packageName%></groupId>
                 <artifactId><%=moduleNameFront%>-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.jdd</groupId>
+                <groupId><%=packageName%></groupId>
                 <artifactId><%=moduleNameFront%>-infrastructure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.jdd</groupId>
+                <groupId><%=packageName%></groupId>
                 <artifactId><%=moduleNameFront%>-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.jdd</groupId>
+                <groupId><%=packageName%></groupId>
                 <artifactId><%=moduleNameFront%>-interfaces</artifactId>
                 <version>${project.version}</version>
             </dependency>
