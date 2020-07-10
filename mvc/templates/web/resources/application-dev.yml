@@ -48,6 +48,8 @@ rpc:
     filter: contextConsumerUseToJsonPrintFilter
 
 spring:
+  profiles:
+    active: @spring.profiles.active@
   datasource:
     url: jdbc:mysql://172.25.4.206:3306/spiltaccount?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&nullNamePatternMatchesAll=true
     username: m_spiltaccount

@@ -210,7 +210,7 @@
         <profile>
           <id>product</id>
           <properties>
-            <profileActive>product</profileActive>
+            <spring.profiles.active>product</spring.profiles.active>
           </properties>
         </profile>
         <profile>
@@ -219,7 +219,7 @@
             <activeByDefault>true</activeByDefault>
           </activation>
           <properties>
-            <profileActive>dev</profileActive>
+            <spring.profiles.active>dev</spring.profiles.active>
           </properties>
         </profile>
     </profiles>
