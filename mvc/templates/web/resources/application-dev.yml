@@ -4,8 +4,8 @@ jd:
     ump-key-prefix: com.jdd.jdpay.test.
   jmq:
     app: BalanceService
-    user: BalanceService
-    password: 2EB21929
+    user: xxx
+    password: xxx
     address: jmq-cluster.jd.local:80
     producer:
       retry-times: 3
@@ -30,8 +30,8 @@ jdd:
         timeout: 100
   easyjob:
     server: http://172.25.4.107:80
-    appId: splitaccount_clearing_center
-    secret: 5f3b2c303a506c46d2228975ec46acd0
+    appId: xxx
+    secret: xxx
 
 rpc:
   server:
@@ -53,7 +53,7 @@ spring:
   datasource:
     url: jdbc:mysql://172.25.4.206:3306/spiltaccount?characterEncoding=utf8&useSSL=true&serverTimezone=Hongkong&nullNamePatternMatchesAll=true
     username: m_spiltaccount
-    password: hFm0Kk
+    password: xxx
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     druid:

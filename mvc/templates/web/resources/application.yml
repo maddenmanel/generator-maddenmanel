@@ -4,8 +4,8 @@ jd:
     ump-key-prefix: <%=packageName%>.<%=baseName%>.
   jmq:
     app: BalanceService
-    user: BalanceService
-    password: 2EB21929
+    user: xxx
+    password: xxx
     address: jmq-cluster.jd.local:80
     producer:
       retry-times: 3
