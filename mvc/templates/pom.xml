@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name><%= systemName %></name>
-    <description>A project used generator-unionstars project</description>
+    <description>A project used generator-maddenmanel project</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

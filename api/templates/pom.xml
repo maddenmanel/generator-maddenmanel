@@ -9,7 +9,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name><%= systemName %></name>
-   <description>A jar used generator-unionstars project</description>
+   <description>A jar used generator-maddenmanel project</description>
 
     <distributionManagement>
         <repository>

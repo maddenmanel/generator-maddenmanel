@@ -43,7 +43,7 @@ SpringGenerator.prototype.askFor = function askFor() {
       type: 'string',
       name: 'packageName',
       message: '请输入包名:',
-      default: 'com.jdd'
+      default: 'com.maddenmanel'
     }, {
       type: 'string',
       name: 'systemName',
@@ -53,6 +53,10 @@ SpringGenerator.prototype.askFor = function askFor() {
   ];
 
   this.prompt(prompts, function (props) {
+    console.log("包名：" + this.packageName);
+    console.log("系统名：" + this.systemName);
+    console.log("基础名：" + this.baseName);
+
     this.packageName = props.packageName;
     this.systemName = props.systemName;
     this.baseName = this.systemName.replace(/\-/g,'.').replace(/\_/g,'.');
@@ -61,6 +65,7 @@ SpringGenerator.prototype.askFor = function askFor() {
 };
 
 SpringGenerator.prototype.app = function app() {
+  console.log(this.packageName);
   var packageFolder = this.packageName.replace(/\./g, '/') + '/' + this.baseName.replace(/\./g,'/');
 
   var srcDir = this.systemName + '/src/main/java/' + packageFolder;

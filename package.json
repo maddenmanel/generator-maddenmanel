@@ -1,21 +1,22 @@
 {
-  "name": "generator-jdd",
-  "version": "1.1.05",
+  "name": "generator-maddenmanel",
+  "version": "1.1.06",
+  "license": "MIT",
   "description": "A Yeoman Generator for Spring Boot and Spring Cloud",
   "keywords": [
     "yeoman-generator"
   ],
-  "homepage": "https://github.com/unionstars/generator-unionstars",
-  "bugs": "https://github.com/unionstars/generator-unionstars/issues",
+  "homepage": "https://github.com/maddenmanel/generator-maddenmanel",
+  "bugs": "https://github.com/maddenmanel/generator-maddenmanel/issues",
   "author": {
     "name": "zhangxuegang",
     "email": "zhangxuegang@gmail.com",
-    "url": "https://github.com/unionstars"
+    "url": "https://github.com/maddenmanel/generator-maddenmanel"
   },
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/unionstars/generator-unionstars.git"
+    "url": "git@github.com:maddenmanel/generator-maddenmanel.git"
   },
   "scripts": {
     "test": "mocha"
