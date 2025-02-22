@@ -1,54 +1,77 @@
-# generator-maddenmanel [![Build Status](https://travis-ci.org/maddenmanel/generator-maddenmanel.svg?branch=master)](https://travis-ci.org/maddenmanel/generator-maddenmanel)
+# generator-maddenmanel 🚀
 
-A [Yeoman](http://yeoman.io) generator for scaffolding and bootstrapping [Spring Boot](http://projects.spring.io/spring-boot/) applications. Provides the same selectable options as [Spring Initializr](http://start.spring.io), but with and interactive CLI interface so your hands can stay where they belong, on the keyboard!
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-The tool build by this article [Think in Clean Architecture](https://maddenmanel.github.io/blog/think-in-clean-architecture/), now enjoy it.
+**A Yeoman Generator for Enterprise Spring Boot Applications**  
+Accelerate your Spring Boot development with Clean Architecture scaffolding, powered by an interactive CLI.
 
-## Getting Started
+---
 
-**安装 Node.js**
+## Features ✨
 
-First you must setup [Node.js](https://www.runoob.com/nodejs/nodejs-install-setup.html)
+- **CLI-Driven Workflow**: Replicates Spring Initializr functionality with a keyboard-first interactive interface
+- **Clean Architecture**: Implements layered architecture patterns from ["Think in Clean Architecture"](https://maddenmanel.github.io/blog/think-in-clean-architecture/)
+- **Modular Generators**: 
+  - `maddenmanel`: Core Spring Boot service with DDD project
+  - `maddenmanel:api`: JSF-based API project scaffolding
+  - `maddenmanel:gateway`: RESTful gateway project template
+  - `maddenmanel:mvc`: MVC project template
+- **Version Compatibility**: Stable foundation using battle-tested dependencies (Node 8.17.0 + Yeoman 3.1.0)
 
-**安装 Yeoman**
+---
 
-```
-$ npm install -g yo
-```
+## Prerequisites ⚙️
 
-**安装 generator-maddenmanel**
+- Node.js Version Manager ([nvm](https://github.com/nvm-sh/nvm))
+  - **Windows**: [nvm-windows](https://github.com/coreybutler/nvm-windows)
+  - **macOS/Linux**: 
+    ```bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+    ```
+- Node.js 8.17.0 (LTS/Dubnium)
 
-```
-$ npm install -g generator-maddenmanel
-```
+---
 
-**初始化一个开箱即用的后端服务中心工程**
+## Installation 🛠️
 
-```
-$ yo maddenmanel
-```
-_The interactive CLI menu will guide the way._
+1. **Configure Node Version**:
+   ```bash
+   nvm install 8.17.0
+   nvm use 8.17.0
+   ```
 
+2. **Install Yeoman**:
+   ```bash
+   npm install -g yo@3.1.0
+   ```
 
-**初始化一个接口工程(Jsf)**
+3. **Install Generator**:
+   ```bash
+   npm install -g generator-maddenmanel
+   ```
 
-```
-$ yo maddenmanel:api
-```
+## Usage 📦
 
+1. **Generate a new project**:
+   ```bash
+   yo maddenmanel
+   ```
 
-**初始化一个前端网关工程(Rest)**
+2. **Generate a new API project**:
+   ```bash
+   yo maddenmanel:api
+   ```
 
-```
-$ yo maddenmanel:gateway
-```
+3. **Generate a new gateway project**:
+   ```bash
+   yo maddenmanel:gateway
+   ```  
 
-## TODO
+4. **Generate a new mvc project**:
+   ```bash
+   yo maddenmanel:mvc
+   ```
 
+## License 📝
 
-## License
-
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
-
-
-
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
